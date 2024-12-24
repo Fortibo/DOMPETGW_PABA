@@ -3,9 +3,9 @@ package com.example.uas_paba_klmpk6.database
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
 
-data class income(
+data class expense(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id_income")
+    @ColumnInfo(name = "is_expense")
     var id : Int = 0,
 
     @ColumnInfo(name = "amount")

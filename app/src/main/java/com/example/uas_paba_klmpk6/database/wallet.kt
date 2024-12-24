@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 data class wallet(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "Id")
+    @ColumnInfo(name = "id")
     var id : Int = 0,
 
     @ColumnInfo(name = "jumlah_balance")
