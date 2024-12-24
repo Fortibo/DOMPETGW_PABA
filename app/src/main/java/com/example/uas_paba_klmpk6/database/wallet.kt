@@ -8,7 +8,7 @@ data class wallet(
     @ColumnInfo(name = "Id")
     var id : Int = 0,
 
-    @ColumnInfo(name = "tanggal")
-    var jumlah_sbalance : Int = 0
+    @ColumnInfo(name = "jumlah_balance")
+    var jumlah_balance : Int = 0
 
 )
