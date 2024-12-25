@@ -228,7 +228,8 @@
                 android:src="@drawable/list"
                 android:background="@drawable/layout_corner_small"
                 android:backgroundTint="@color/white"
-                android:layout_marginHorizontal="20dp"/>
+                android:layout_marginHorizontal="20dp"
+                app:tint="#4BC355" />
 
             <ImageButton
                 android:id="@+id/btnAdd"
