@@ -38,7 +38,7 @@ interface balanceDAO {
     fun selectAllIncome() : MutableList<income>
 
     @Query("SELECT * FROM income WHERE id_income=:isi_id")
-    suspend fun getItemIncome(isi_id: Int) : expense
+    suspend fun getItemIncome(isi_id: Int) : income
 
 //idi wallet
     @Insert(onConflict = OnConflictStrategy.IGNORE)

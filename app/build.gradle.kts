@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.uas_paba_klmpk6"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.uas_paba_klmpk6"
