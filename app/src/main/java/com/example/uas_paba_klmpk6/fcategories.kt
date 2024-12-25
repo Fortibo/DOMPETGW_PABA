@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.uas_paba_klmpk6.database.category
+
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -20,6 +24,12 @@ class fcategories : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var adapterCategory: adapterCategory
+    private var arCategory: MutableList<category> = mutableListOf(
+        category(1,"Food"),
+        category(2, "Drinks")
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -32,6 +42,14 @@ class fcategories : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_categories, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        adapterCategory = adapterCategory(arCategory)
+        var _rvCategory = view.findViewById<RecyclerView>(R.id.categoryRecycler)
+        _rvCategory.layoutManager = LinearLayoutManager(this.context)
+        _rvCategory.adapter = adapterCategory
     }
 
     companion object {
