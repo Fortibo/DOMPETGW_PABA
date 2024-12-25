@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val intent = Intent(this@MainActivity, inputCategory::class.java)
-        startActivity(intent)
+//        val intent = Intent(this@MainActivity, inputCategory::class.java)
+//        startActivity(intent)
     }
 }
