@@ -11,8 +11,8 @@ interface balanceDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertExpense(expense: expense)
 
-    @Query("UPDATE expense SET amount=:isi_amount, category=:isi_category, title=:isi_title, note=:isi_note, date=:isi_date WHERE id_expense=:pilih_id")
-    fun updateExpense(isi_amount: Int, isi_category: String, isi_title: String, isi_note: String,isi_date: String, pilih_id: Int)
+    @Query("UPDATE expense SET amount=:isi_amount, category=:isi_category, title=:isi_title, note=:isi_note, date=:isi_date, location=:isi_location WHERE id_expense=:pilih_id")
+    fun updateExpense(isi_amount: Int, isi_category: String, isi_title: String, isi_note: String,isi_date: String, isi_location: String, pilih_id: Int)
 
     @Delete
     fun deleteExpense(expense: expense)
@@ -28,8 +28,8 @@ interface balanceDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertIncome(income: income)
 
-    @Query("UPDATE income SET amount=:isi_amount, category=:isi_category, title=:isi_title, note=:isi_note, date=:isi_date WHERE id_income=:pilih_id")
-    fun updateIncome(isi_amount: Int, isi_category: String, isi_title: String, isi_note: String,isi_date: String, pilih_id: Int)
+    @Query("UPDATE income SET amount=:isi_amount, category=:isi_category, title=:isi_title, note=:isi_note, date=:isi_date, location=:isi_location WHERE id_income=:pilih_id")
+    fun updateIncome(isi_amount: Int, isi_category: String, isi_title: String, isi_note: String,isi_date: String, isi_location: String, pilih_id: Int)
 
     @Delete
     fun deleteIncome(income: income)

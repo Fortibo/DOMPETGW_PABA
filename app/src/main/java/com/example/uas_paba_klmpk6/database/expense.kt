@@ -23,5 +23,8 @@ data class expense(
     var note : String? = null,
 
     @ColumnInfo(name = "date")
-    var date : String? = null
+    var date : String? = null,
+
+    @ColumnInfo(name = "location")
+    var location : String? = null
 )
