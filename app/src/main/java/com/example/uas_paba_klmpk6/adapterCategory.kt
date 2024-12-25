@@ -1,6 +1,7 @@
 package com.example.uas_paba_klmpk6
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,14 +21,21 @@ class adapterCategory(private val category: MutableList<category>):RecyclerView
         return ListViewHolder(view)
     }
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+    interface OnItemClickCallback {
+       fun nextInput(dtCategory: category)
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     override fun onBindViewHolder(holder: adapterCategory.ListViewHolder, position: Int) {
         var daftar = category[position]
 
         holder._namaCategory.setText(daftar.name)
         holder._btn.setOnClickListener {
-            val context = holder.itemView.context
-            val intent = Intent(context, MainActivity::class.java)
-            context.startActivity(intent)
+            onItemClickCallback.nextInput(daftar)
         }
     }
 
@@ -38,6 +46,13 @@ class adapterCategory(private val category: MutableList<category>):RecyclerView
     inner class ListViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         var _btn = itemView.findViewById<ConstraintLayout>(R.id.categoryBtn)
         var _namaCategory = itemView.findViewById<TextView>(R.id.categoryName)
+    }
+
+    fun updateData(newData: MutableList<category>) {
+        Log.d("DEBUG", "Updating data with: $newData")
+        category.clear()
+        category.addAll(newData)
+        notifyDataSetChanged()
     }
 
 }
