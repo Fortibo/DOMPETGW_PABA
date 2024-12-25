@@ -1,8 +1,10 @@
 package com.example.uas_paba_klmpk6.database
 
 import androidx.room.ColumnInfo
+import androidx.room.Entity
 import androidx.room.PrimaryKey
 
+@Entity
 data class income(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id_income")
