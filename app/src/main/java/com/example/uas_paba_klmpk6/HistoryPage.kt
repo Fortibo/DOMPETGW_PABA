@@ -62,6 +62,7 @@ class HistoryPage : AppCompatActivity() {
         val btNetBalance = findViewById<ConstraintLayout>(R.id.netBalance)
         val btHome = findViewById<ImageButton>(R.id.btnHome)
         val _btAdd = findViewById<ImageButton>(R.id.btnAdd)
+        val _btnBudget = findViewById<ImageButton>(R.id.btnBudget)
 
         val txtNetMoney =  findViewById<TextView>(R.id.netbalanceMoney)
         val txtIncomeMoney =  findViewById<TextView>(R.id.incomeTextMoney)
@@ -123,6 +124,10 @@ class HistoryPage : AppCompatActivity() {
         }
         _btAdd.setOnClickListener {
             val intent = Intent(this@HistoryPage, inputCategory::class.java)
+            startActivity(intent)
+        }
+        _btnBudget.setOnClickListener{
+            val intent = Intent(this@HistoryPage, budgeting_main::class.java)
             startActivity(intent)
         }
     }
