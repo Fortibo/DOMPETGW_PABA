@@ -21,7 +21,7 @@ interface budgetingDAO {
     fun deleteBudget(budget: budgeting)
 
     @Query("SELECT * FROM budgeting")
-    fun getAllBudgets(): List<budgeting>
+    fun getAllBudgets(): MutableList<budgeting>
 
     @Query("SELECT * FROM budgeting WHERE id_budget = :id")
     fun getBudgetById(id: Int): budgeting?
@@ -35,7 +35,7 @@ interface budgetingDAO {
     fun getTransactionsByBudgetId(budgetId: Int): List<budgetTransaction>
 
     @Query("SELECT * FROM budgetTransaction")
-    fun getAllTransactions(): List<budgetTransaction>
+    fun getAllTransactions(): MutableList<budgetTransaction>
 
     // --- Combined Operations ---
     @Transaction

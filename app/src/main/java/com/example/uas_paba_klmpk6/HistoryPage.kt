@@ -135,18 +135,18 @@ class HistoryPage : AppCompatActivity() {
             Log.d("data ROOM", daftarExpense.toString())
             Log.d("data ROOM", daftarAll.toString())
         }
-        CoroutineScope(Dispatchers.IO).async {
-            // Contoh Data Baru
-            val newIncome = income( amount = 500000, title = "Gaji Bulanan", category = "Salary", note = "TesIncome", date = getCurrentDate(), location = "TES LOKASI")
-            val newExpense = expense( amount = 200000, title = "Belanja Harian", category = "Food", note = "tesExpense", date = getCurrentDate(), location = "TES LOKASI")
-
-            // Masukkan Data ke Database
-            DB.funmainDAO().insertIncome(newIncome)
-            DB.funmainDAO().insertExpense(newExpense)
-
-            // Log untuk memastikan
-            Log.d("DB_INSERT", "Income Added: $newIncome")
-            Log.d("DB_INSERT", "Expense Added: $newExpense")
-        }
+//        CoroutineScope(Dispatchers.IO).async {
+//            // Contoh Data Baru
+//            val newIncome = income( amount = 500000, title = "Gaji Bulanan", category = "Salary", note = "TesIncome", date = getCurrentDate(), location = "TES LOKASI")
+//            val newExpense = expense( amount = 200000, title = "Belanja Harian", category = "Food", note = "tesExpense", date = getCurrentDate(), location = "TES LOKASI")
+//
+//            // Masukkan Data ke Database
+//            DB.funmainDAO().insertIncome(newIncome)
+//            DB.funmainDAO().insertExpense(newExpense)
+//
+//            // Log untuk memastikan
+//            Log.d("DB_INSERT", "Income Added: $newIncome")
+//            Log.d("DB_INSERT", "Expense Added: $newExpense")
+//        }
     }
 }

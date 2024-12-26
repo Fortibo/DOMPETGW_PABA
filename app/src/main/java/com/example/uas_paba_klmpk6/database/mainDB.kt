@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 
-@Database(entities = [expense::class,income::class,wallet::class], version = 2)
+@Database(entities = [expense::class,income::class,wallet::class,budgeting::class,budgetTransaction::class], version = 2)
 abstract class mainDB : RoomDatabase() {
     abstract fun funmainDAO() : balanceDAO
     abstract fun funBudgetDAO() : budgetingDAO
