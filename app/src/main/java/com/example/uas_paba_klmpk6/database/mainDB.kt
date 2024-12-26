@@ -7,22 +7,22 @@ import androidx.room.RoomDatabase
 
 
 @Database(entities = [expense::class,income::class,wallet::class], version = 2)
-abstract class expenseDB : RoomDatabase() {
-    abstract fun funhistoryBelanjaDAO() : balanceDAO
+abstract class mainDB : RoomDatabase() {
+    abstract fun funmainDAO() : balanceDAO
     companion object{
         @Volatile
-        private var INSTANCE : expenseDB? = null
+        private var INSTANCE : mainDB? = null
 
         @JvmStatic
-        fun getDatabase(context: Context) : expenseDB{
+        fun getDatabase(context: Context) : mainDB{
             if(INSTANCE == null){
-                synchronized(expenseDB::class.java){
+                synchronized(mainDB::class.java){
                     INSTANCE = Room.databaseBuilder(
-                        context.applicationContext,expenseDB::class.java,"main_db"
+                        context.applicationContext,mainDB::class.java,"main_db"
                     ).allowMainThreadQueries().build()
                 }
             }
-            return INSTANCE as expenseDB
+            return INSTANCE as mainDB
         }
     }
 }
