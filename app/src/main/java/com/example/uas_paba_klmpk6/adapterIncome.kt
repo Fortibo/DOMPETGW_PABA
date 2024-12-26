@@ -9,6 +9,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet.Constraint
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uas_paba_klmpk6.database.income
+import java.text.NumberFormat
+import java.util.Locale
 
 class adapterIncome(private val incomeData : MutableList<income>) : RecyclerView.Adapter<adapterIncome.ListViewHolder> () {
     private lateinit var onItemClickCallback : OnItemClickCallback
@@ -42,7 +44,13 @@ class adapterIncome(private val incomeData : MutableList<income>) : RecyclerView
         holder.tvIncomeType.setText(income.category)
         holder.tvIncomeTitle.setText(income.title)
         holder.tvIncomeDate.setText(income.date)
-        holder.tvIncomeMoney.setText(income.amount)
+
+        val rupiahFormat: NumberFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+        rupiahFormat.setMaximumFractionDigits(0) // Menghilangkan desimal
+        val formattedAmount: String = rupiahFormat.format(income.amount)
+        val moneyIncome = "+$formattedAmount"
+
+        holder.tvIncomeMoney.setText(moneyIncome)
 
 
     }
