@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".inputNote">
+
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:id="@+id/titleLayout"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:padding="8dp"
+            android:id="@+id/backButton"
+            android:background="@drawable/square_border"
+            android:outlineProvider="background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_back"/>
+
+        <TextView
+            android:textColor="@color/black"
+            android:id="@+id/inputTitle"
+            android:layout_marginLeft="16dp"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Note"/>
+    </LinearLayout>
+
+    <!--  Subtitle layout  -->
+    <LinearLayout
+        android:id="@+id/subTitleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleLayout">
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:text="\u2014"
+            android:textColor="#36A74A"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:text="3. Date &amp; Time"
+            android:textColor="#36A74A"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:text="\u2014"
+            android:textColor="#36A74A"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:text="4. Name &amp; Note"
+            android:textColor="#36A74A"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:text="\u2014"
+            android:textColor="#36A74A"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:layout_marginLeft="8dp"
+            android:text="5. Review"
+            android:textColor="#BBBBBB"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/nameSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transaction Name"
+        android:layout_marginLeft="16dp"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        app:layout_constraintTop_toBottomOf="@id/subTitleLayout"
+        app:layout_constraintLeft_toLeftOf="@id/subTitleLayout"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/nameInputCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/nameSubtitle">
+
+        <EditText
+            android:id="@+id/etName"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter transaction name"
+            android:textSize="15sp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:background="@null"
+            android:textColor="@color/black"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:id="@+id/noteSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Note (Optional)"
+        android:textColor="@color/black"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        app:layout_constraintTop_toBottomOf="@id/nameInputCard"
+        app:layout_constraintLeft_toLeftOf="@id/nameSubtitle"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/noteSubtitle">
+
+        <EditText
+            android:id="@+id/etNote"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your traxnsaction note"
+            android:textSize="15sp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:background="@null"
+            android:textColor="@color/black"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_margin="24dp"
+        android:backgroundTint="#36A74A"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
