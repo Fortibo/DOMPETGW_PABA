@@ -96,6 +96,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/income"
                     android:layout_width="0dp"
+                    app:layout_constraintWidth_percent="0.49"
                     android:layout_height="match_parent"
                     android:background="@drawable/border"
                     android:padding="16dp"
@@ -146,6 +147,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/border"
+                    app:layout_constraintWidth_percent="0.49"
                     android:padding="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

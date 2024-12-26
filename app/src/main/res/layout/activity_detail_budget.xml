@@ -212,4 +212,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
+    <Button
+        android:id="@+id/btnDeleteBudget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#FF3728"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:text="Delete"
+        android:textFontWeight="800"
+        android:textSize="18dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btDetailBudget" />
 </androidx.constraintlayout.widget.ConstraintLayout>
