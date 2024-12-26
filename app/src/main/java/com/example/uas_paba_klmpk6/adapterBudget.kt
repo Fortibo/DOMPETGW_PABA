@@ -1,9 +1,11 @@
 package com.example.uas_paba_klmpk6
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uas_paba_klmpk6.database.budgeting
 import java.text.NumberFormat
@@ -20,6 +22,7 @@ class adapterBudget (private val budgetData : MutableList<budgeting>) :RecyclerV
         var _tvTargetDate = itemView.findViewById<TextView>(R.id.tvTargetDate)
         var _tvBudgetNote = itemView.findViewById<TextView>(R.id.tvBudgetNote)
         val _tvBudgetCategory = itemView.findViewById<TextView>(R.id.tvBudgetCategory)
+        var _tvContainerBudget = itemView.findViewById<ConstraintLayout>(R.id.clBudgetCard)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -39,7 +42,12 @@ class adapterBudget (private val budgetData : MutableList<budgeting>) :RecyclerV
         holder._tvTargetDate.setText(budget.target_date)
         holder._tvBudgetNote.setText(budget.budget_note)
         holder._tvBudgetCategory.setText(budget.budget_category)
-
+        holder._tvContainerBudget.setOnClickListener {
+            val intent = Intent(it.context, detailBudget::class.java)
+            intent.putExtra("id",budget.id_budget)
+            it.context.startActivity(intent)
+            notifyDataSetChanged()
+        }
         val targetDate = budget.target_date
         if (!targetDate.isNullOrEmpty()) {
             val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()) // Adjust format as per your date format
