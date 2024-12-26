@@ -2,6 +2,8 @@ package com.example.uas_paba_klmpk6
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -17,8 +19,11 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val _btHistory = findViewById<ImageButton>(R.id.btnHistory)
 
-        val intent = Intent(this@MainActivity, inputCategory::class.java)
-        startActivity(intent)
+        _btHistory.setOnClickListener{
+            val intent = Intent(this@MainActivity,HistoryPage::class.java)
+            startActivity(intent)
+        }
     }
 }

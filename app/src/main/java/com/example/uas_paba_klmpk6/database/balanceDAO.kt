@@ -69,4 +69,11 @@ interface balanceDAO {
     ORDER BY date ASC
 """)
     fun getAllHistory(): MutableList<history>
+
+//    untuk sum jumlah
+    @Query("SELECT SUM(amount) FROM income")
+    fun getTotalIncome(): Int
+
+    @Query("SELECT SUM(amount) FROM expense")
+    fun getTotalExpense(): Int
 }
