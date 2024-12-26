@@ -48,7 +48,7 @@ class adapterExpense (private val expenseData : MutableList<expense>)  : Recycle
         val rupiahFormat: NumberFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
         rupiahFormat.setMaximumFractionDigits(0) // Menghilangkan desimal
         val formattedAmount: String = rupiahFormat.format(expense.amount)
-        val moneyExpense = "+$formattedAmount"
+        val moneyExpense = "-$formattedAmount"
 
         holder.tvExpenseMoney.setText(moneyExpense)
 

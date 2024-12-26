@@ -1,8 +1,11 @@
 package com.example.uas_paba_klmpk6
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +18,7 @@ import com.example.uas_paba_klmpk6.database.expense
 import com.example.uas_paba_klmpk6.database.history
 import com.example.uas_paba_klmpk6.database.income
 import com.example.uas_paba_klmpk6.database.mainDB
+import com.example.uas_paba_klmpk6.helper.DateHelper.getCurrentDate
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -47,28 +51,72 @@ class HistoryPage : AppCompatActivity() {
         adapterExpense = adapterExpense(arExpense)
         adapterHistory = adapterAll(arAll)
 
+        DB = mainDB.getDatabase(this)
+
         val _rvItem= findViewById<RecyclerView>(R.id.rv_item)
 
         val btIncome = findViewById<ConstraintLayout>(R.id.income)
         val btExpense = findViewById<ConstraintLayout>(R.id.expense)
+        val btNetBalance = findViewById<ConstraintLayout>(R.id.netBalance)
+        val btHome = findViewById<ImageButton>(R.id.btnHome)
 
         val txtNetMoney =  findViewById<TextView>(R.id.netbalanceMoney)
         val txtIncomeMoney =  findViewById<TextView>(R.id.incomeTextMoney)
         val txtExpenseMoney =  findViewById<TextView>(R.id.expenseTextMoney)
+        val txtQueryType = findViewById<TextView>(R.id.queryType)
+
+        val totalIncome = DB.funmainDAO().getTotalIncome() ?: 0
+        val totalExpense = DB.funmainDAO().getTotalExpense() ?: 0
+        val rupiahFormat: NumberFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+        rupiahFormat.setMaximumFractionDigits(0) // Menghilangkan desimal
 
 
+        val formatIncome: String = rupiahFormat.format(totalIncome)
+        val formatExpense: String = rupiahFormat.format(totalExpense)
+        val net : String =  rupiahFormat.format(totalIncome - totalExpense)
 
-        DB = mainDB.getDatabase(this)
+
+        txtNetMoney.setText(net)
+        txtIncomeMoney.setText(formatIncome)
+        txtExpenseMoney.setText(formatExpense)
+
+
 
         _rvItem.layoutManager = LinearLayoutManager(this)
         _rvItem.adapter = adapterHistory
 
+        btHome.setOnClickListener {
+            val inten = Intent(this@HistoryPage,MainActivity::class.java)
+            startActivity(inten)
+        }
+
         btIncome.setOnClickListener {
             _rvItem.adapter = adapterIncome
+            btIncome.setBackgroundResource(R.drawable.border_selected_income)
+            btExpense.setBackgroundResource(R.drawable.border)
+            btNetBalance.setBackgroundResource(R.drawable.border)
+
+            txtQueryType.setText("Income")
+            txtQueryType.setTextColor(Color.parseColor("#4BC355"))
         }
 
         btExpense.setOnClickListener {
             _rvItem.adapter = adapterExpense
+            btExpense.setBackgroundResource(R.drawable.border_selected_expense)
+            btIncome.setBackgroundResource(R.drawable.border)
+            btNetBalance.setBackgroundResource(R.drawable.border)
+
+            txtQueryType.setText("Expense(s)")
+            txtQueryType.setTextColor(Color.parseColor("#FF3728"))
+        }
+        btNetBalance.setOnClickListener {
+            _rvItem.adapter = adapterHistory
+            btNetBalance.setBackgroundResource(R.drawable.border_selected)
+            btIncome.setBackgroundResource(R.drawable.border)
+            btExpense.setBackgroundResource(R.drawable.border)
+
+            txtQueryType.setText("All")
+            txtQueryType.setTextColor(Color.BLACK)
         }
     }
 
@@ -76,21 +124,7 @@ class HistoryPage : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         CoroutineScope(Dispatchers.IO).async {
-            val totalIncome = DB.funmainDAO().getTotalIncome() ?: 0
-            val totalExpense = DB.funmainDAO().getTotalExpense() ?: 0
-            val rupiahFormat: NumberFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
-            rupiahFormat.setMaximumFractionDigits(0) // Menghilangkan desimal
 
-
-            val formatIncome: String = rupiahFormat.format(totalIncome)
-            val formatExpense: String = rupiahFormat.format(totalExpense)
-            val net : String =  rupiahFormat.format(totalIncome - totalExpense)
-
-            runOnUiThread {
-                findViewById<TextView>(R.id.incomeTextMoney).text = formatIncome
-                findViewById<TextView>(R.id.expenseTextMoney).text = formatExpense
-                findViewById<TextView>(R.id.netbalanceMoney).text = net
-            }
             val daftarIncome = DB.funmainDAO().selectAllIncome()
             val daftarExpense = DB.funmainDAO().selectAllExpense()
             val daftarAll = DB.funmainDAO().getAllHistory()
@@ -100,6 +134,19 @@ class HistoryPage : AppCompatActivity() {
             Log.d("data ROOM", daftarIncome.toString())
             Log.d("data ROOM", daftarExpense.toString())
             Log.d("data ROOM", daftarAll.toString())
+        }
+        CoroutineScope(Dispatchers.IO).async {
+            // Contoh Data Baru
+            val newIncome = income( amount = 500000, title = "Gaji Bulanan", category = "Salary", note = "TesIncome", date = getCurrentDate(), location = "TES LOKASI")
+            val newExpense = expense( amount = 200000, title = "Belanja Harian", category = "Food", note = "tesExpense", date = getCurrentDate(), location = "TES LOKASI")
+
+            // Masukkan Data ke Database
+            DB.funmainDAO().insertIncome(newIncome)
+            DB.funmainDAO().insertExpense(newExpense)
+
+            // Log untuk memastikan
+            Log.d("DB_INSERT", "Income Added: $newIncome")
+            Log.d("DB_INSERT", "Expense Added: $newExpense")
         }
     }
 }
