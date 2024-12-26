@@ -8,9 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.example.uas_paba_klmpk6.adapterExpense.ListViewHolder
-import com.example.uas_paba_klmpk6.database.expense
 import com.example.uas_paba_klmpk6.database.history
+import java.text.NumberFormat
+import java.util.Locale
+
 
 class adapterAll (private val historyData : MutableList<history>)  : RecyclerView.Adapter<adapterAll.ListViewHolder> () {
     private lateinit var onItemClickCallback : OnItemClickCallback
@@ -40,15 +41,22 @@ class adapterAll (private val historyData : MutableList<history>)  : RecyclerVie
         holder.tvAllType.setText(history.category)
         holder.tvAllTitle.setText(history.title)
         holder.tvAllDate.setText(history.date)
+        val rupiahFormat: NumberFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+        rupiahFormat.setMaximumFractionDigits(0) // Menghilangkan desimal
+        val formattedAmount: String = rupiahFormat.format(history.amount)
+
 
         if(history.type == "income"){
             holder.tvAllMoney.setTextColor(Color.parseColor("#4BC355"))
-            holder.tvAllMoney.setText("+" + history.amount)
+            val moneyIncome = "+$formattedAmount"
+            holder.tvAllMoney.text = moneyIncome
             holder.tvAllContainer.setBackgroundResource(R.drawable.green_border)
         }
         else{
             holder.tvAllMoney.setTextColor(Color.parseColor("#FF3728"))
-            holder.tvAllMoney.setText("-" + history.amount)
+            val moneyExpense = "+$formattedAmount"
+            holder.tvAllMoney.text = moneyExpense
+
             holder.tvAllContainer.setBackgroundResource(R.drawable.red_border)
         }
     }

@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,8 +46,8 @@ class HistoryPage : AppCompatActivity() {
 
         val _rvItem= findViewById<RecyclerView>(R.id.rv_item)
 
-        val btIncome = findViewById<Button>(R.id.income)
-        val btExpense = findViewById<Button>(R.id.expense)
+        val btIncome = findViewById<ConstraintLayout>(R.id.income)
+        val btExpense = findViewById<ConstraintLayout>(R.id.expense)
 
         DB = mainDB.getDatabase(this)
 
