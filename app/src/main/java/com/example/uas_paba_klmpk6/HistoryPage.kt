@@ -19,6 +19,7 @@ import com.example.uas_paba_klmpk6.database.history
 import com.example.uas_paba_klmpk6.database.income
 import com.example.uas_paba_klmpk6.database.mainDB
 import com.example.uas_paba_klmpk6.helper.DateHelper.getCurrentDate
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -46,6 +47,7 @@ class HistoryPage : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        siapkanData()
 
         adapterIncome = adapterIncome(arIncome)
         adapterExpense = adapterExpense(arExpense)
@@ -59,6 +61,7 @@ class HistoryPage : AppCompatActivity() {
         val btExpense = findViewById<ConstraintLayout>(R.id.expense)
         val btNetBalance = findViewById<ConstraintLayout>(R.id.netBalance)
         val btHome = findViewById<ImageButton>(R.id.btnHome)
+        val _btAdd = findViewById<ImageButton>(R.id.btnAdd)
 
         val txtNetMoney =  findViewById<TextView>(R.id.netbalanceMoney)
         val txtIncomeMoney =  findViewById<TextView>(R.id.incomeTextMoney)
@@ -118,9 +121,26 @@ class HistoryPage : AppCompatActivity() {
             txtQueryType.setText("All")
             txtQueryType.setTextColor(Color.BLACK)
         }
+        _btAdd.setOnClickListener {
+            val intent = Intent(this@HistoryPage, inputCategory::class.java)
+            startActivity(intent)
+        }
     }
 
+    public fun siapkanData(){
+        CoroutineScope(Dispatchers.IO).async {
 
+            val daftarIncome = DB.funmainDAO().selectAllIncome()
+            val daftarExpense = DB.funmainDAO().selectAllExpense()
+            val daftarAll = DB.funmainDAO().getAllHistory()
+            adapterIncome.isiData(daftarIncome)
+            adapterExpense.isiData(daftarExpense)
+            adapterHistory.isiData(daftarAll)
+            Log.d("data ROOM", daftarIncome.toString())
+            Log.d("data ROOM", daftarExpense.toString())
+            Log.d("data ROOM", daftarAll.toString())
+        }
+    }
     override fun onStart() {
         super.onStart()
         CoroutineScope(Dispatchers.IO).async {

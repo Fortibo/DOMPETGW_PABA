@@ -82,20 +82,24 @@
                     app:layout_constraintVertical_bias="1.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/netBalance">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/income"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/border"
                     android:padding="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -105,8 +109,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/plus_jakarta_sans_semibold"
                         android:text="Income"
-                        android:textFontWeight="600"
                         android:textColor="@color/black"
+                        android:textFontWeight="600"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -128,65 +132,63 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
-                        android:textColor="@color/black"
                         android:fontFamily="@font/plus_jakarta_sans_bold"
                         android:text="Rp 100,000"
+                        android:textColor="@color/black"
                         android:textFontWeight="600"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/incomeText" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/border"
-                android:padding="16dp"
-                android:id="@+id/expense"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/netBalance">
-
-                <TextView
-                    android:id="@+id/expenseText"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/black"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/plus_jakarta_sans_semibold"
-                    android:text="Expense"
-                    android:textFontWeight="600"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/expense"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/border"
+                    android:padding="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/expenseTextMoney"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="@font/plus_jakarta_sans_bold"
-                    android:text="Rp 100,000"
-                    android:textColor="@color/black"
-                    android:textFontWeight="600"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="@+id/expenseText"
-                    app:layout_constraintStart_toStartOf="@+id/expenseText"
-                    app:layout_constraintTop_toBottomOf="@+id/expenseText" />
+                    <TextView
+                        android:id="@+id/expenseText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/plus_jakarta_sans_semibold"
+                        android:text="Expense"
+                        android:textColor="@color/black"
+                        android:textFontWeight="600"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_marginEnd="4dp"
-                    android:src="@drawable/down"
-                    app:layout_constraintBottom_toBottomOf="@+id/expenseTextMoney"
-                    app:layout_constraintEnd_toStartOf="@+id/expenseTextMoney"
-                    app:layout_constraintTop_toTopOf="@+id/expenseTextMoney" />
+                    <TextView
+                        android:id="@+id/expenseTextMoney"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/plus_jakarta_sans_bold"
+                        android:text="Rp 100,000"
+                        android:textColor="@color/black"
+                        android:textFontWeight="600"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="@+id/expenseText"
+                        app:layout_constraintStart_toStartOf="@+id/expenseText"
+                        app:layout_constraintTop_toBottomOf="@+id/expenseText" />
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginEnd="4dp"
+                        android:src="@drawable/down"
+                        app:layout_constraintBottom_toBottomOf="@+id/expenseTextMoney"
+                        app:layout_constraintEnd_toStartOf="@+id/expenseTextMoney"
+                        app:layout_constraintTop_toTopOf="@+id/expenseTextMoney" />
 
 
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
