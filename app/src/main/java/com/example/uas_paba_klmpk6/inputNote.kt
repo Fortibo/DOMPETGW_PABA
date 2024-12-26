@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,6 +22,11 @@ class inputNote : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val _btnBack = findViewById<ImageButton>(R.id.backButton)
+        _btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
         }
 
 
@@ -43,6 +49,20 @@ class inputNote : AppCompatActivity() {
                     name = "incomeData"
                 } else if (expenseData != null) {
                     data = expense(category = expenseData.category, amount = expenseData.amount, date = expenseData.date, title = _etTitle.text.toString(), note = _etNote.text.toString())
+                    name = "expenseData"
+                } else {
+                    data = income()
+                }
+                val intent = Intent(this@inputNote, inputReview::class.java).apply {
+                    putExtra(name, data)
+                }
+                startActivity(intent)
+            } else if (!_etTitle.text.isNullOrEmpty() ){
+                if (incomeData != null) {
+                    data = income(category = incomeData.category, amount = incomeData.amount, date = incomeData.date, title = _etTitle.text.toString(), note = "-")
+                    name = "incomeData"
+                } else if (expenseData != null) {
+                    data = expense(category = expenseData.category, amount = expenseData.amount, date = expenseData.date, title = _etTitle.text.toString(), note = "-")
                     name = "expenseData"
                 } else {
                     data = income()

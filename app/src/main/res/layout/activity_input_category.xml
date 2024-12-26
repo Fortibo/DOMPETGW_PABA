@@ -34,6 +34,7 @@
             android:layout_marginLeft="16dp"
             android:layout_gravity="center"
             android:textSize="20sp"
+            android:textColor="@color/black"
             android:fontFamily="@font/plus_jakarta_sans_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -163,6 +164,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/plus_jakarta_sans_bold"
                     android:text="Choose Category" />
 
@@ -178,6 +180,7 @@
                         android:id="@+id/selectedType"
                         android:textSize="10sp"
                         android:layout_margin="3dp"
+                        android:textColor="@color/black"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/plus_jakarta_sans_bold"
@@ -222,6 +225,7 @@
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:layout_marginTop="8dp"
                     android:text="Income"/>
 
@@ -250,6 +254,7 @@
                     android:textSize="14sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:layout_marginTop="8dp"
                     android:text="Expense"/>
 
