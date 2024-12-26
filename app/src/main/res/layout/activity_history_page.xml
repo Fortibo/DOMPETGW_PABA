@@ -87,7 +87,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/netBalance">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/constraintLayout"
+                    android:id="@+id/income"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -141,6 +141,7 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/border"
                 android:padding="16dp"
+                android:id="@+id/expense"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/netBalance">
 
