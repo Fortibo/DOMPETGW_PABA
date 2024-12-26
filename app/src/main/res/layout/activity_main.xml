@@ -49,6 +49,7 @@
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/plus_jakarta_sans_bold"
                 android:text="DompetGW"
+                android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@id/clHeader"
                 app:layout_constraintStart_toEndOf="@id/ivLogo"
@@ -142,6 +143,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/plus_jakarta_sans_semibold"
                 android:text="Income"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@id/clIncome"
@@ -170,6 +172,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rp. "
+                    android:textColor="@color/black"
                     android:fontFamily="@font/plus_jakarta_sans_semibold"
                     android:textSize="15sp" />
 
@@ -179,6 +182,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5.000.000"
+                    android:textColor="@color/black"
                     android:textSize="15sp" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -202,6 +206,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Expense"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:fontFamily="@font/plus_jakarta_sans_semibold"
                 app:layout_constraintEnd_toEndOf="@id/clExpense"
@@ -230,6 +235,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Rp. "
+                    android:textColor="@color/black"
                     android:fontFamily="@font/plus_jakarta_sans_semibold"
                     android:textSize="15sp" />
 
@@ -238,6 +244,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="5.000.000"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/plus_jakarta_sans_semibold"
                     android:textSize="15sp" />
             </LinearLayout>
@@ -274,6 +281,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTransactionListHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
