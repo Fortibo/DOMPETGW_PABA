@@ -17,6 +17,8 @@
         android:fontFamily="@font/plus_jakarta_sans_semibold"
         android:text="Transaction Recap"
         android:textFontWeight="700"
+        android:paddingBottom="4dp"
+        android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -53,6 +55,7 @@
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
@@ -103,6 +106,7 @@
                         android:fontFamily="@font/plus_jakarta_sans_semibold"
                         android:text="Income"
                         android:textFontWeight="600"
+                        android:textColor="@color/black"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -124,6 +128,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
+                        android:textColor="@color/black"
                         android:fontFamily="@font/plus_jakarta_sans_bold"
                         android:text="Rp 100,000"
                         android:textFontWeight="600"
@@ -148,6 +153,7 @@
                 <TextView
                     android:id="@+id/expenseText"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/plus_jakarta_sans_semibold"
                     android:text="Expense"
@@ -163,6 +169,7 @@
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/plus_jakarta_sans_bold"
                     android:text="Rp 100,000"
+                    android:textColor="@color/black"
                     android:textFontWeight="600"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@+id/expenseText"

@@ -82,13 +82,22 @@ class HistoryPage : AppCompatActivity() {
 
         btIncome.setOnClickListener {
             _rvItem.adapter = adapterIncome
+            btIncome.setBackgroundResource(R.drawable.border_selected_income)
+            btExpense.setBackgroundResource(R.drawable.border)
+            btNetBalance.setBackgroundResource(R.drawable.border)
         }
 
         btExpense.setOnClickListener {
             _rvItem.adapter = adapterExpense
+            btExpense.setBackgroundResource(R.drawable.border_selected_expense)
+            btIncome.setBackgroundResource(R.drawable.border)
+            btNetBalance.setBackgroundResource(R.drawable.border)
         }
         btNetBalance.setOnClickListener {
             _rvItem.adapter = adapterHistory
+            btNetBalance.setBackgroundResource(R.drawable.border_selected)
+            btIncome.setBackgroundResource(R.drawable.border)
+            btExpense.setBackgroundResource(R.drawable.border)
         }
     }
 
