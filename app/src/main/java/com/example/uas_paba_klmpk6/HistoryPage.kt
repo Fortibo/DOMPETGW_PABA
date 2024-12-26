@@ -1,8 +1,11 @@
 package com.example.uas_paba_klmpk6
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -55,10 +58,12 @@ class HistoryPage : AppCompatActivity() {
         val btIncome = findViewById<ConstraintLayout>(R.id.income)
         val btExpense = findViewById<ConstraintLayout>(R.id.expense)
         val btNetBalance = findViewById<ConstraintLayout>(R.id.netBalance)
+        val btHome = findViewById<ImageButton>(R.id.btnHome)
 
         val txtNetMoney =  findViewById<TextView>(R.id.netbalanceMoney)
         val txtIncomeMoney =  findViewById<TextView>(R.id.incomeTextMoney)
         val txtExpenseMoney =  findViewById<TextView>(R.id.expenseTextMoney)
+        val txtQueryType = findViewById<TextView>(R.id.queryType)
 
         val totalIncome = DB.funmainDAO().getTotalIncome() ?: 0
         val totalExpense = DB.funmainDAO().getTotalExpense() ?: 0
@@ -80,15 +85,38 @@ class HistoryPage : AppCompatActivity() {
         _rvItem.layoutManager = LinearLayoutManager(this)
         _rvItem.adapter = adapterHistory
 
+        btHome.setOnClickListener {
+            val inten = Intent(this@HistoryPage,MainActivity::class.java)
+            startActivity(inten)
+        }
+
         btIncome.setOnClickListener {
             _rvItem.adapter = adapterIncome
+            btIncome.setBackgroundResource(R.drawable.border_selected_income)
+            btExpense.setBackgroundResource(R.drawable.border)
+            btNetBalance.setBackgroundResource(R.drawable.border)
+
+            txtQueryType.setText("Income")
+            txtQueryType.setTextColor(Color.parseColor("#4BC355"))
         }
 
         btExpense.setOnClickListener {
             _rvItem.adapter = adapterExpense
+            btExpense.setBackgroundResource(R.drawable.border_selected_expense)
+            btIncome.setBackgroundResource(R.drawable.border)
+            btNetBalance.setBackgroundResource(R.drawable.border)
+
+            txtQueryType.setText("Expense(s)")
+            txtQueryType.setTextColor(Color.parseColor("#FF3728"))
         }
         btNetBalance.setOnClickListener {
             _rvItem.adapter = adapterHistory
+            btNetBalance.setBackgroundResource(R.drawable.border_selected)
+            btIncome.setBackgroundResource(R.drawable.border)
+            btExpense.setBackgroundResource(R.drawable.border)
+
+            txtQueryType.setText("All")
+            txtQueryType.setTextColor(Color.BLACK)
         }
     }
 
