@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -24,13 +25,29 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 class inputCategory : AppCompatActivity() {
     private lateinit var adapterCategory: adapterCategory
     private var arCategoryIncome: MutableList<category> = mutableListOf(
-        category(1,"Income", "Salary"),
-        category(2,"Income", "Investing")
+        category(1, "Income", "Salary"),
+        category(2, "Income", "Freelance Work"),
+        category(3, "Income", "Investments"),
+        category(4, "Income", "Rental Income"),
+        category(5, "Income", "Dividends"),
+        category(6, "Income", "Interest"),
+        category(7, "Income", "Business Profit"),
+        category(8, "Income", "Bonuses"),
+        category(9, "Income", "Gifts or Grants"),
+        category(10, "Income", "Side Hustle"),
     )
 
     private var arCategoryExpense: MutableList<category> = mutableListOf(
-        category(1, "Expsense", "Food"),
-        category(2, "Expense","Drinks")
+        category(11, "Expense", "Rent"),
+        category(12, "Expense", "Utilities"),
+        category(13, "Expense", "Groceries"),
+        category(14, "Expense", "Transportation"),
+        category(15, "Expense", "Entertainment"),
+        category(16, "Expense", "Dining Out"),
+        category(17, "Expense", "Healthcare"),
+        category(18, "Expense", "Education"),
+        category(19, "Expense", "Debt Repayment"),
+        category(20, "Expense", "Clothing")
     )
 
     private var arCategoryEmpty: MutableList<category> = mutableListOf(
@@ -49,6 +66,11 @@ class inputCategory : AppCompatActivity() {
 
 
         adapterCategory = adapterCategory(arCategoryEmpty)
+
+        val _btnBack = findViewById<ImageButton>(R.id.backButton)
+        _btnBack.setOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
 
         var _selectedType = findViewById<TextView>(R.id.selectedType)
         var _selectedTypeCard = findViewById<CardView>(R.id.selectedTypeCard)
@@ -87,6 +109,9 @@ class inputCategory : AppCompatActivity() {
             _selectedTypeCard.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FF6B6B"))
             _selectedType.text = "Expense"
 
+            _btnExpense.setBackgroundResource(R.drawable.border_selected_expense)
+            _btnIncome.setBackgroundResource(R.drawable.border)
+
             selectorSubTitle?.setText("Expenses Spent")
             selectorTitleCard?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FF3728"))
             selectorTitleTv?.setText("Expense")
@@ -102,6 +127,9 @@ class inputCategory : AppCompatActivity() {
             val selectorSubTitle = bottomSheetDialog.findViewById<TextView>(R.id.selectorSubTitleTv)
             _selectedTypeCard.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#C7F9BB"))
             _selectedType.text = "Income"
+
+            _btnExpense.setBackgroundResource(R.drawable.border)
+            _btnIncome.setBackgroundResource(R.drawable.border_selected_income)
 
             selectorSubTitle?.setText("Earned Income")
             selectorTitleCard?.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#4BC355"))

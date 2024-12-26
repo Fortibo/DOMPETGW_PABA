@@ -30,6 +30,7 @@
             android:src="@drawable/arrow_back"/>
 
         <TextView
+            android:textColor="@color/black"
             android:id="@+id/inputTitle"
             android:layout_marginLeft="16dp"
             android:layout_gravity="center"
@@ -120,6 +121,7 @@
     </LinearLayout>
 
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/nameSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -150,6 +152,7 @@
             android:textSize="15sp"
             android:fontFamily="@font/plus_jakarta_sans_medium"
             android:background="@null"
+            android:textColor="@color/black"
             />
 
     </androidx.cardview.widget.CardView>
@@ -184,6 +187,7 @@
             android:textSize="15sp"
             android:fontFamily="@font/plus_jakarta_sans_medium"
             android:background="@null"
+            android:textColor="@color/black"
             />
 
     </androidx.cardview.widget.CardView>
