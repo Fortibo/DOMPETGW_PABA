@@ -1,6 +1,5 @@
 package com.example.uas_paba_klmpk6
 
-import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +22,7 @@ class adapterCategory(private val category: MutableList<category>):RecyclerView
 
     private lateinit var onItemClickCallback: OnItemClickCallback
     interface OnItemClickCallback {
-       fun nextInput(dtCategory: category)
+       fun pickedInput(dtCategory: category)
     }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
@@ -35,7 +34,13 @@ class adapterCategory(private val category: MutableList<category>):RecyclerView
 
         holder._namaCategory.setText(daftar.name)
         holder._btn.setOnClickListener {
-            onItemClickCallback.nextInput(daftar)
+            onItemClickCallback.pickedInput(daftar)
+        }
+
+        if (daftar.type.equals("Income")){
+            holder._btn.setBackgroundResource(R.drawable.green_border)
+        } else {
+            holder._btn.setBackgroundResource(R.drawable.red_border)
         }
     }
 

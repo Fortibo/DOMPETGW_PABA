@@ -1,5 +1,7 @@
 package com.example.uas_paba_klmpk6.database
 
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -27,4 +29,39 @@ data class expense(
 
     @ColumnInfo(name = "location")
     var location : String? = null
-)
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString()
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
+        parcel.writeInt(amount)
+        parcel.writeString(category)
+        parcel.writeString(title)
+        parcel.writeString(note)
+        parcel.writeString(date)
+        parcel.writeString(location)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<expense> {
+        override fun createFromParcel(parcel: Parcel): expense {
+            return expense(parcel)
+        }
+
+        override fun newArray(size: Int): Array<expense?> {
+            return arrayOfNulls(size)
+        }
+    }
+}

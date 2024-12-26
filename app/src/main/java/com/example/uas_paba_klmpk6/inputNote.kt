@@ -3,23 +3,21 @@ package com.example.uas_paba_klmpk6
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
-import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.uas_paba_klmpk6.database.category
 import com.example.uas_paba_klmpk6.database.expense
 import com.example.uas_paba_klmpk6.database.income
 
-class inputAmount : AppCompatActivity() {
+class inputNote : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_input_amount)
+        setContentView(R.layout.activity_input_note)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -32,38 +30,47 @@ class inputAmount : AppCompatActivity() {
         }
 
 
+        //Inpututnsunfiaunaiwundoaw
         val incomeData = intent.getParcelableExtra<income>("incomeData")
         val expenseData = intent.getParcelableExtra<expense>("expenseData")
-        val _etAmount = findViewById<TextView>(R.id.etAmount)
-
-        var category: String?
+        val _etTitle = findViewById<EditText>(R.id.etName)
+        val _etNote = findViewById<EditText>(R.id.etNote)
+        val category: String?
         var data: Parcelable?
         var name = ""
 
+        //
 
         var _btnNext = findViewById<Button>(R.id.nextBtn)
         _btnNext.setOnClickListener {
-            if (!_etAmount.text.isNullOrEmpty()){
+            if (!_etTitle.text.isNullOrEmpty() && !_etNote.text.isNullOrEmpty()){
                 if (incomeData != null) {
-                    category = incomeData.category
-                    data = income(category = category, amount = _etAmount.text.toString().toInt())
+                    data = income(category = incomeData.category, amount = incomeData.amount, date = incomeData.date, title = _etTitle.text.toString(), note = _etNote.text.toString())
                     name = "incomeData"
                 } else if (expenseData != null) {
-                    category = expenseData.category
-                    data = expense(category = category, amount = _etAmount.text.toString().toInt())
+                    data = expense(category = expenseData.category, amount = expenseData.amount, date = expenseData.date, title = _etTitle.text.toString(), note = _etNote.text.toString())
                     name = "expenseData"
                 } else {
-                    category = "undefined"
                     data = income()
                 }
-
-                val intent = Intent(this@inputAmount, inputDate::class.java).apply {
+                val intent = Intent(this@inputNote, inputReview::class.java).apply {
                     putExtra(name, data)
                 }
                 startActivity(intent)
-            } else {
-                category = "undefined"
-                data = income()
+            } else if (!_etTitle.text.isNullOrEmpty() ){
+                if (incomeData != null) {
+                    data = income(category = incomeData.category, amount = incomeData.amount, date = incomeData.date, title = _etTitle.text.toString(), note = "-")
+                    name = "incomeData"
+                } else if (expenseData != null) {
+                    data = expense(category = expenseData.category, amount = expenseData.amount, date = expenseData.date, title = _etTitle.text.toString(), note = "-")
+                    name = "expenseData"
+                } else {
+                    data = income()
+                }
+                val intent = Intent(this@inputNote, inputReview::class.java).apply {
+                    putExtra(name, data)
+                }
+                startActivity(intent)
             }
         }
     }

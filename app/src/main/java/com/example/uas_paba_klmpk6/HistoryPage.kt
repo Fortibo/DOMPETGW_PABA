@@ -1,11 +1,11 @@
 package com.example.uas_paba_klmpk6
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +19,7 @@ import com.example.uas_paba_klmpk6.database.history
 import com.example.uas_paba_klmpk6.database.income
 import com.example.uas_paba_klmpk6.database.mainDB
 import com.example.uas_paba_klmpk6.helper.DateHelper.getCurrentDate
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -46,6 +47,7 @@ class HistoryPage : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        siapkanData()
 
         adapterIncome = adapterIncome(arIncome)
         adapterExpense = adapterExpense(arExpense)
@@ -53,19 +55,19 @@ class HistoryPage : AppCompatActivity() {
 
         DB = mainDB.getDatabase(this)
 
-        val btHome = findViewById<ImageButton>(R.id.btnHome)
-        val btBudget = findViewById<ImageButton>(R.id.btnBudget)
-        val btSetting = findViewById<ImageButton>(R.id.btnSettings)
-
         val _rvItem= findViewById<RecyclerView>(R.id.rv_item)
 
         val btIncome = findViewById<ConstraintLayout>(R.id.income)
         val btExpense = findViewById<ConstraintLayout>(R.id.expense)
         val btNetBalance = findViewById<ConstraintLayout>(R.id.netBalance)
+        val btHome = findViewById<ImageButton>(R.id.btnHome)
+        val _btAdd = findViewById<ImageButton>(R.id.btnAdd)
+        val _btnBudget = findViewById<ImageButton>(R.id.btnBudget)
 
         val txtNetMoney =  findViewById<TextView>(R.id.netbalanceMoney)
         val txtIncomeMoney =  findViewById<TextView>(R.id.incomeTextMoney)
         val txtExpenseMoney =  findViewById<TextView>(R.id.expenseTextMoney)
+        val txtQueryType = findViewById<TextView>(R.id.queryType)
 
         val totalIncome = DB.funmainDAO().getTotalIncome() ?: 0
         val totalExpense = DB.funmainDAO().getTotalExpense() ?: 0
@@ -87,11 +89,19 @@ class HistoryPage : AppCompatActivity() {
         _rvItem.layoutManager = LinearLayoutManager(this)
         _rvItem.adapter = adapterHistory
 
+        btHome.setOnClickListener {
+            val inten = Intent(this@HistoryPage,MainActivity::class.java)
+            startActivity(inten)
+        }
+
         btIncome.setOnClickListener {
             _rvItem.adapter = adapterIncome
             btIncome.setBackgroundResource(R.drawable.border_selected_income)
             btExpense.setBackgroundResource(R.drawable.border)
             btNetBalance.setBackgroundResource(R.drawable.border)
+
+            txtQueryType.setText("Income")
+            txtQueryType.setTextColor(Color.parseColor("#4BC355"))
         }
 
         btExpense.setOnClickListener {
@@ -99,19 +109,43 @@ class HistoryPage : AppCompatActivity() {
             btExpense.setBackgroundResource(R.drawable.border_selected_expense)
             btIncome.setBackgroundResource(R.drawable.border)
             btNetBalance.setBackgroundResource(R.drawable.border)
+
+            txtQueryType.setText("Expense(s)")
+            txtQueryType.setTextColor(Color.parseColor("#FF3728"))
         }
         btNetBalance.setOnClickListener {
             _rvItem.adapter = adapterHistory
             btNetBalance.setBackgroundResource(R.drawable.border_selected)
             btIncome.setBackgroundResource(R.drawable.border)
             btExpense.setBackgroundResource(R.drawable.border)
+
+            txtQueryType.setText("All")
+            txtQueryType.setTextColor(Color.BLACK)
         }
-        btHome.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+        _btAdd.setOnClickListener {
+            val intent = Intent(this@HistoryPage, inputCategory::class.java)
+            startActivity(intent)
+        }
+        _btnBudget.setOnClickListener{
+            val intent = Intent(this@HistoryPage, budgeting_main::class.java)
+            startActivity(intent)
         }
     }
 
+    public fun siapkanData(){
+        CoroutineScope(Dispatchers.IO).async {
 
+            val daftarIncome = DB.funmainDAO().selectAllIncome()
+            val daftarExpense = DB.funmainDAO().selectAllExpense()
+            val daftarAll = DB.funmainDAO().getAllHistory()
+            adapterIncome.isiData(daftarIncome)
+            adapterExpense.isiData(daftarExpense)
+            adapterHistory.isiData(daftarAll)
+            Log.d("data ROOM", daftarIncome.toString())
+            Log.d("data ROOM", daftarExpense.toString())
+            Log.d("data ROOM", daftarAll.toString())
+        }
+    }
     override fun onStart() {
         super.onStart()
         CoroutineScope(Dispatchers.IO).async {
