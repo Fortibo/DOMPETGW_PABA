@@ -136,6 +136,7 @@
         <TextView
             android:fontFamily="@font/plus_jakarta_sans_bold"
             android:textSize="12sp"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Categories"/>
