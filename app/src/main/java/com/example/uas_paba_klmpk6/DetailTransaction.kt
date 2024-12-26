@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -35,6 +36,7 @@ class DetailTransaction : AppCompatActivity() {
         val _tvNote = findViewById<TextView>(R.id.tvNote)
         val _tvAmount = findViewById<TextView>(R.id.tvAmount)
         val _tvTypeColor = findViewById<TextView>(R.id.tvTypeColor)
+        val _ivIconType = findViewById<ImageView>(R.id.ivIconType)
 
 
         val title = intent.getStringExtra("title") ?: "Default Title"
@@ -46,7 +48,7 @@ class DetailTransaction : AppCompatActivity() {
         val time = getTime()
 
 
-        _tvNamaTransactionDetail.text = title
+        _tvNamaTransactionDetail.text = "  " + title
         _tvCategories.setText(category)
         _tvType.setText(type)
         _tvDate.setText(date)
@@ -54,15 +56,18 @@ class DetailTransaction : AppCompatActivity() {
         _tvNote.setText(note)
         _tvTypeColor.text = type
         if(_tvType.text == "Expense" || _tvType.text == "expense"){
-            _tvTypeColor.setBackgroundColor(Color.parseColor("#ff765d"))
+            _tvType.setText("Expense")
+            _tvTypeColor.setText("Expense")
+            _tvTypeColor.setBackgroundColor(Color.parseColor("#ff9c7e"))
             _tvAmount.text = "- " + amount
-            _tvAmount.setTextColor(Color.parseColor("#ff765d"))
+            _tvAmount.setTextColor(Color.parseColor("#ff3728"))
         }else if (_tvType.text == "Income" || _tvType.text == "income"){
-            _tvTypeColor.setBackgroundColor(Color.parseColor("#4bc355"))
+            _tvType.setText("Income")
+            _tvTypeColor.setText("Income")
+            _tvTypeColor.setBackgroundColor(Color.parseColor("#C7F9BB"))
             _tvAmount.text = "+ " + amount
             _tvAmount.setTextColor(Color.parseColor("#4bc355"))
         }
-
 
         _tvBack.setOnClickListener {
             startActivity(Intent(this, HistoryPage::class.java))

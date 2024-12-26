@@ -15,7 +15,7 @@
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="  Transaction Detail"
+        android:text="Transaction Detail"
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_marginLeft="16dp"
@@ -33,11 +33,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:orientation="horizontal">
-            <TextView
-                android:id="@+id/tvIconTransactionDetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableStart="@drawable/money"/>
+            <ImageView
+                android:id="@+id/ivIconType"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/dollar"/>
             <TextView
                 android:id="@+id/tvNamaTransactionDetail"
                 android:layout_width="wrap_content"
