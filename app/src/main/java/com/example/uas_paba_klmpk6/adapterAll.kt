@@ -54,7 +54,7 @@ class adapterAll (private val historyData : MutableList<history>)  : RecyclerVie
         }
         else{
             holder.tvAllMoney.setTextColor(Color.parseColor("#FF3728"))
-            val moneyExpense = "+$formattedAmount"
+            val moneyExpense = "-$formattedAmount"
             holder.tvAllMoney.text = moneyExpense
 
             holder.tvAllContainer.setBackgroundResource(R.drawable.red_border)
