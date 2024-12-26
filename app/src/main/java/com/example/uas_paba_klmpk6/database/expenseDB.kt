@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 
-@Database(entities = [expense::class, income::class, wallet::class], version = 3)
+@Database(entities = [expense::class,income::class,wallet::class], version = 2)
 abstract class expenseDB : RoomDatabase() {
     abstract fun funhistoryBelanjaDAO() : balanceDAO
     companion object{
@@ -18,7 +18,7 @@ abstract class expenseDB : RoomDatabase() {
             if(INSTANCE == null){
                 synchronized(expenseDB::class.java){
                     INSTANCE = Room.databaseBuilder(
-                        context.applicationContext,expenseDB::class.java,"historyBarang_db"
+                        context.applicationContext,expenseDB::class.java,"main_db"
                     ).allowMainThreadQueries().build()
                 }
             }
