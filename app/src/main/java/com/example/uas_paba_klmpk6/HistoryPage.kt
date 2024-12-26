@@ -1,8 +1,11 @@
 package com.example.uas_paba_klmpk6
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -49,6 +52,10 @@ class HistoryPage : AppCompatActivity() {
         adapterHistory = adapterAll(arAll)
 
         DB = mainDB.getDatabase(this)
+
+        val btHome = findViewById<ImageButton>(R.id.btnHome)
+        val btBudget = findViewById<ImageButton>(R.id.btnBudget)
+        val btSetting = findViewById<ImageButton>(R.id.btnSettings)
 
         val _rvItem= findViewById<RecyclerView>(R.id.rv_item)
 
@@ -98,6 +105,9 @@ class HistoryPage : AppCompatActivity() {
             btNetBalance.setBackgroundResource(R.drawable.border_selected)
             btIncome.setBackgroundResource(R.drawable.border)
             btExpense.setBackgroundResource(R.drawable.border)
+        }
+        btHome.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 

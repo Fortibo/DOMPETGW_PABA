@@ -62,7 +62,9 @@ class adapterExpense (private val expenseData : MutableList<expense>)  : Recycle
             intent.putExtra("date", expense.date)
             intent.putExtra("category", expense.category)
             intent.putExtra("note", expense.note)
-            intent.putExtra("type", "Expense")
+            intent.putExtra("location", expense.location)
+            intent.putExtra("type", "expense")
+
             it.context.startActivity(intent)
         }
 

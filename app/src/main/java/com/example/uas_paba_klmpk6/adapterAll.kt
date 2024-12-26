@@ -70,6 +70,7 @@ class adapterAll (private val historyData : MutableList<history>)  : RecyclerVie
             intent.putExtra("category", history.category)
             intent.putExtra("note", history.note)
             intent.putExtra("type", history.type)
+
             it.context.startActivity(intent)
         }
     }
@@ -77,6 +78,7 @@ class adapterAll (private val historyData : MutableList<history>)  : RecyclerVie
     override fun getItemCount(): Int {
       return historyData.size
     }
+
     fun isiData(history : List<history>){
         historyData.clear()
         historyData.addAll(history)

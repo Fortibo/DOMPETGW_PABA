@@ -61,7 +61,9 @@ class adapterIncome(private val incomeData : MutableList<income>) : RecyclerView
             intent.putExtra("date", income.date)
             intent.putExtra("category", income.category)
             intent.putExtra("note", income.note)
-            intent.putExtra("type", "Income")
+            intent.putExtra("location", income.location)
+            intent.putExtra("type", "income")
+
             it.context.startActivity(intent)
         }
     }
