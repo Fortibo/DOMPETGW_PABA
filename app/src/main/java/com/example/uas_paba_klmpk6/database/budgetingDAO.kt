@@ -26,8 +26,8 @@ interface budgetingDAO {
     @Query("SELECT * FROM budgeting WHERE id_budget = :id")
     fun getBudgetById(id: Int): budgeting?
 
-    @Query("UPDATE budgeting SET target_amount=:isi_target_amount, saved_amount=:isi_saved_amount WHERE id_budget=:pilih_id_budget")
-    fun updateBudgetFixed(isi_target_amount: Int, isi_saved_amount: Int,pilih_id_budget: Int)
+    @Query("UPDATE budgeting SET  saved_amount=:isi_saved_amount WHERE id_budget=:pilih_id_budget")
+    fun updateBudgetFixed( isi_saved_amount: Int,pilih_id_budget: Int)
 
 
     // --- BudgetTransaction Table Methods ---
