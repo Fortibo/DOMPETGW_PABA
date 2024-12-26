@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".inputReview">
+
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:id="@+id/titleLayout"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:padding="8dp"
+            android:id="@+id/backButton"
+            android:background="@drawable/square_border"
+            android:outlineProvider="background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_back"/>
+
+        <TextView
+            android:id="@+id/inputTitle"
+            android:layout_marginLeft="16dp"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Review"/>
+    </LinearLayout>
+
+    <!--  Subtitle layout  -->
+    <LinearLayout
+        android:id="@+id/subTitleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleLayout">
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:text="\u2014"
+            android:textColor="#36A74A"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:text="3. Date &amp; Time"
+            android:textColor="#36A74A"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:text="\u2014"
+            android:textColor="#36A74A"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:text="4. Name &amp; Note"
+            android:textColor="#36A74A"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:text="\u2014"
+            android:textColor="#36A74A"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:layout_marginLeft="8dp"
+            android:text="5. Review"
+            android:textColor="#36A74A"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!--  View Review  -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/subTitleLayout"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginLeft="16dp"
+                    android:layout_width="37.5dp"
+                    android:layout_height="37.5dp"
+                    android:src="@drawable/dollar"/>
+
+                <TextView
+                    android:id="@+id/tvNamaTransaksi"
+                    android:paddingLeft="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Transaksi"
+                    android:fontFamily="@font/plus_jakarta_sans_bold"/>
+            </LinearLayout>
+            
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:textColor="#BBBBBB"/>
+
+            <TextView
+                android:id="@+id/tvAmount"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp. 90.000"
+                android:textSize="25sp"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:textColor="#4BC355"/>
+
+            <View
+                android:layout_marginHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#BBBBBB"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp" />
+
+            <LinearLayout
+                android:layout_marginBottom="16dp"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Categories"
+                    android:fontFamily="@font/plus_jakarta_sans_medium"
+                    android:textColor="#BBBBBB" />
+
+
+                <TextView
+                    android:id="@+id/tvCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="Salaries &amp; Wages"
+                    android:fontFamily="@font/plus_jakarta_sans_semibold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="16dp"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Date"
+                    android:fontFamily="@font/plus_jakarta_sans_medium"
+                    android:textColor="#BBBBBB" />
+
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="DES 26 2024"
+                    android:fontFamily="@font/plus_jakarta_sans_semibold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="16dp"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Time"
+                    android:fontFamily="@font/plus_jakarta_sans_medium"
+                    android:textColor="#BBBBBB" />
+
+
+                <TextView
+                    android:id="@+id/tvTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="05:00 Pm"
+                    android:fontFamily="@font/plus_jakarta_sans_semibold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="16dp"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Note"
+                    android:fontFamily="@font/plus_jakarta_sans_medium"
+                    android:textColor="#BBBBBB" />
+
+
+                <TextView
+                    android:id="@+id/tvNote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="-"
+                    android:fontFamily="@font/plus_jakarta_sans_semibold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#36A74A"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Finish"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/cancelBtn"/>
+
+    <Button
+        android:id="@+id/cancelBtn"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#FFFFFF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:textColor="#BBBBBB"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
