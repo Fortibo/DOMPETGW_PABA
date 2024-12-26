@@ -3,6 +3,7 @@ package com.example.uas_paba_klmpk6
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -17,6 +18,8 @@ import com.example.uas_paba_klmpk6.database.mainDB
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import java.text.NumberFormat
+import java.util.Locale
 
 class HistoryPage : AppCompatActivity() {
     private lateinit var DB : mainDB
@@ -49,6 +52,12 @@ class HistoryPage : AppCompatActivity() {
         val btIncome = findViewById<ConstraintLayout>(R.id.income)
         val btExpense = findViewById<ConstraintLayout>(R.id.expense)
 
+        val txtNetMoney =  findViewById<TextView>(R.id.netbalanceMoney)
+        val txtIncomeMoney =  findViewById<TextView>(R.id.incomeTextMoney)
+        val txtExpenseMoney =  findViewById<TextView>(R.id.expenseTextMoney)
+
+
+
         DB = mainDB.getDatabase(this)
 
         _rvItem.layoutManager = LinearLayoutManager(this)
@@ -67,6 +76,21 @@ class HistoryPage : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         CoroutineScope(Dispatchers.IO).async {
+            val totalIncome = DB.funmainDAO().getTotalIncome() ?: 0
+            val totalExpense = DB.funmainDAO().getTotalExpense() ?: 0
+            val rupiahFormat: NumberFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+            rupiahFormat.setMaximumFractionDigits(0) // Menghilangkan desimal
+
+
+            val formatIncome: String = rupiahFormat.format(totalIncome)
+            val formatExpense: String = rupiahFormat.format(totalExpense)
+            val net : String =  rupiahFormat.format(totalIncome - totalExpense)
+
+            runOnUiThread {
+                findViewById<TextView>(R.id.incomeTextMoney).text = formatIncome
+                findViewById<TextView>(R.id.expenseTextMoney).text = formatExpense
+                findViewById<TextView>(R.id.netbalanceMoney).text = net
+            }
             val daftarIncome = DB.funmainDAO().selectAllIncome()
             val daftarExpense = DB.funmainDAO().selectAllExpense()
             val daftarAll = DB.funmainDAO().getAllHistory()
