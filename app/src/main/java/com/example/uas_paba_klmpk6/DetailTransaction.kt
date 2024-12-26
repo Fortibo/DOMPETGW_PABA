@@ -248,6 +248,11 @@ class DetailTransaction : AppCompatActivity() {
             startActivity(Intent(this, HistoryPage::class.java))
         }
 
+
+        val _btnAddTransaction = findViewById<Button>(R.id.btnAddTransaction)
+        _btnAddTransaction.setOnClickListener {
+            startActivity(Intent(this, inputCategory::class.java))
+        }
     }
 
 }
