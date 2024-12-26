@@ -17,6 +17,8 @@ import com.example.uas_paba_klmpk6.database.mainDB
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import java.text.NumberFormat
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     private lateinit var DB : mainDB
@@ -39,6 +41,19 @@ class MainActivity : AppCompatActivity() {
         val _tvBalance = findViewById<TextView>(R.id.tvBalance)
         val _tvIncome = findViewById<TextView>(R.id.tvIncome)
         val _tvExpense = findViewById<TextView>(R.id.tvExpense)
+
+        val income = DB.funmainDAO().getTotalIncome()
+        val expense = DB.funmainDAO().getTotalExpense()
+        val rupiahFormat : NumberFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+        rupiahFormat.setMaximumFractionDigits(0)
+
+        val formatIncome = rupiahFormat.format(income)
+        val formatExpense = rupiahFormat.format(expense)
+        val netBalance : String = rupiahFormat.format(income-expense)
+
+        _tvBalance.setText(netBalance)
+        _tvIncome.setText(formatIncome)
+        _tvExpense.setText(formatExpense)
 
         val _rvTransactionListHome = findViewById<RecyclerView>(R.id.rvTransactionListHome)
 
