@@ -122,20 +122,25 @@ class inputCategory : AppCompatActivity() {
 
         var _btnNext = findViewById<Button>(R.id.nextBtn)
         _btnNext.setOnClickListener {
+            val intents: Intent
             if (_selectedCategory.text != "Choose Category"){
                 var name = ""
                 if (_selectedType.text == "Income"){
                     val dataIncome = income(category = _selectedCategory.text.toString())
                     name = "incomeData"
+
+                    intents = Intent(this@inputCategory, inputAmount::class.java).apply {
+                        putExtra(name, dataIncome)
+                    }
+                    startActivity(intents)
                 } else if(_selectedType.text == "Expense"){
                     val dataExpense = expense(category = _selectedCategory.text.toString())
                     name = "expenseData"
+                    intents = Intent(this@inputCategory, inputAmount::class.java).apply {
+                        putExtra(name, dataExpense)
+                    }
+                    startActivity(intents)
                 }
-
-                val intent = Intent(this@inputCategory, inputAmount::class.java).apply {
-                    putExtra(name, data)
-                }
-                startActivity(intent)
             }
         }
     }

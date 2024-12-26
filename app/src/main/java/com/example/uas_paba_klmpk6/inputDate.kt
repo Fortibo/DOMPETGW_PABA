@@ -3,6 +3,8 @@ package com.example.uas_paba_klmpk6
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.DatePicker
@@ -13,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.uas_paba_klmpk6.database.expense
+import com.example.uas_paba_klmpk6.database.income
 import java.util.Calendar
 import java.util.Date
 
@@ -35,17 +39,43 @@ class inputDate : AppCompatActivity() {
             openDatePicker()
         }
 
+        //INSERTS////////
+        val incomeData = intent.getParcelableExtra<income>("incomeData")
+        val expenseData = intent.getParcelableExtra<expense>("expenseData")
+        val _tvDate = findViewById<TextView>(R.id.selectedDate)
+        val category: String?
+        var data: Parcelable?
+        var name = ""
+        //////////
+
         var _btnNext = findViewById<Button>(R.id.nextBtn)
         _btnNext.setOnClickListener {
-            val intent = Intent(this@inputDate, inputNote::class.java)
-            startActivity(intent)
+
+            if (_tvDate.text != "Select Date"){
+                if (incomeData != null) {
+                    data = income(category = incomeData.category, amount = incomeData.amount, date = _tvDate.text.toString())
+                    name = "incomeData"
+                } else if (expenseData != null) {
+                    data = expense(category = expenseData.category, amount = expenseData.amount, date = _tvDate.text.toString())
+                    name = "expenseData"
+                } else {
+                    data = income()
+                }
+                Log.d("DEBUG", "Categories: ${data}")
+                val intent = Intent(this@inputDate, inputNote::class.java).apply {
+                    putExtra(name, data)
+                }
+                startActivity(intent)
+            } else {
+                data = income()
+            }
         }
     }
 
     private fun initDatePicker(){
         val dateListener = DatePickerDialog.OnDateSetListener { _, year, month, day ->
             val date = makeDateString(day, month + 1, year)
-            var _tvSelected = findViewById<TextView>(R.id.selectedCategory)
+            var _tvSelected = findViewById<TextView>(R.id.selectedDate)
             _tvSelected.setText(date)
         }
 
