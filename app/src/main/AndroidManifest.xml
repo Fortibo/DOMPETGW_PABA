@@ -16,6 +16,9 @@
             android:name=".inputBudget"
             android:exported="false" />
         <activity
+            android:name=".detailBudget"
+            android:exported="false" />
+        <activity
             android:name=".budgeting_main"
             android:exported="false" />
         <activity
