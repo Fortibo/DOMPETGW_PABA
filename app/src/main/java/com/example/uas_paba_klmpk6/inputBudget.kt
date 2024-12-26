@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
@@ -56,16 +57,25 @@ class inputBudget : AppCompatActivity() {
         }
 
         val _btnNext = findViewById<ConstraintLayout>(R.id.cvNext)
-        _btnNext.setOnClickListener{
-            val budgetName = _etBudgetName.text.toString()
-            val targetAmount = _etTargetAmount.text.toString().toIntOrNull() ?: 0
-            val category = _etCategory.text.toString()
-            val note = _etNote.text.toString()
+        _btnNext.setOnClickListener {
+            val budgetName = _etBudgetName.text.toString().trim()
+            val targetAmountString = _etTargetAmount.text.toString().trim()
+            val category = _etCategory.text.toString().trim()
+            val note = _etNote.text.toString().trim()
 
-            // Populate the budgeting object
+            // Input validation
+            if (budgetName.isEmpty() || targetAmountString.isEmpty() || category.isEmpty() || selectedDate == null) {
+                runOnUiThread {
+                    Toast.makeText(this, "Please fill out all required fields!", Toast.LENGTH_SHORT).show()
+                }
+                return@setOnClickListener
+            }
+
+            val targetAmount = targetAmountString.toIntOrNull() ?: 0
+
             budgetInput.budget_name = budgetName
             budgetInput.target_amount = targetAmount
-            budgetInput.saved_amount = 0 // Default to 0 for new budgets
+            budgetInput.saved_amount = 0
             budgetInput.target_date = selectedDate
             budgetInput.budget_category = category
             budgetInput.budget_note = note
@@ -76,12 +86,11 @@ class inputBudget : AppCompatActivity() {
                 Log.d("DB_INSERT", "Budget Added: $budgetInput")
 
                 runOnUiThread {
+                    Toast.makeText(this@inputBudget, "Budget successfully added!", Toast.LENGTH_SHORT).show()
                     finish() // Close the current activity
                 }
             }
         }
-
-
     }
 
     private fun initDatePicker(){
