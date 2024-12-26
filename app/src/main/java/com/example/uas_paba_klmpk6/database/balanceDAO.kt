@@ -70,7 +70,6 @@ interface balanceDAO {
 """)
     fun getAllHistory(): MutableList<history>
 
-//    untuk sum jumlah
     @Query("SELECT SUM(amount) FROM income")
     fun getTotalIncome(): Int
 

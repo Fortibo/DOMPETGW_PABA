@@ -55,6 +55,10 @@ class HistoryPage : AppCompatActivity() {
 
         DB = mainDB.getDatabase(this)
 
+        val btHome = findViewById<ImageButton>(R.id.btnHome)
+        val btBudget = findViewById<ImageButton>(R.id.btnBudget)
+        val btSetting = findViewById<ImageButton>(R.id.btnSettings)
+
         val _rvItem= findViewById<RecyclerView>(R.id.rv_item)
 
         val btIncome = findViewById<ConstraintLayout>(R.id.income)
@@ -129,6 +133,9 @@ class HistoryPage : AppCompatActivity() {
         _btnBudget.setOnClickListener{
             val intent = Intent(this@HistoryPage, budgeting_main::class.java)
             startActivity(intent)
+        }
+        btHome.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
         }
     }
 
