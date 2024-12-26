@@ -37,8 +37,8 @@ interface balanceDAO {
     @Query("SELECT * FROM income ORDER BY id_income asc")
     fun selectAllIncome() : MutableList<income>
 
-    @Query("SELECT * FROM income WHERE id_income=:isi_id")
-    suspend fun getItemIncome(isi_id: Int) : income
+//    @Query("SELECT * FROM income WHERE id_income=:isi_id")
+//    suspend fun getItemIncome(isi_id: Int) : expense
 
 //idi wallet
     @Insert(onConflict = OnConflictStrategy.IGNORE)
@@ -70,7 +70,6 @@ interface balanceDAO {
 """)
     fun getAllHistory(): MutableList<history>
 
-//    untuk sum jumlah
     @Query("SELECT SUM(amount) FROM income")
     fun getTotalIncome(): Int
 

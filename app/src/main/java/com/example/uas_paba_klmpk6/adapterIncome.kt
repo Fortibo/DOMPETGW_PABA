@@ -1,5 +1,6 @@
 package com.example.uas_paba_klmpk6
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -52,7 +53,17 @@ class adapterIncome(private val incomeData : MutableList<income>) : RecyclerView
 
         holder.tvIncomeMoney.setText(moneyIncome)
 
-
+        holder.tvIncomeContainer.setOnClickListener {
+            val intent = Intent(it.context, DetailTransaction::class.java)
+            intent.putExtra("id", income.id)
+            intent.putExtra("title", income.title)
+            intent.putExtra("amount", formattedAmount)
+            intent.putExtra("date", income.date)
+            intent.putExtra("category", income.category)
+            intent.putExtra("note", income.note)
+            intent.putExtra("type", "Income")
+            it.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

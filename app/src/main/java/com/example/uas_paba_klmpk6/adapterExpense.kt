@@ -1,5 +1,6 @@
 package com.example.uas_paba_klmpk6
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,8 +51,20 @@ class adapterExpense (private val expenseData : MutableList<expense>)  : Recycle
         val formattedAmount: String = rupiahFormat.format(expense.amount)
         val moneyExpense = "-$formattedAmount"
 
+
         holder.tvExpenseMoney.setText(moneyExpense)
 
+        holder.tvExpenseContainer.setOnClickListener {
+            val intent = Intent(it.context, DetailTransaction::class.java)
+            intent.putExtra("id", expense.id)
+            intent.putExtra("title", expense.title)
+            intent.putExtra("amount", formattedAmount)
+            intent.putExtra("date", expense.date)
+            intent.putExtra("category", expense.category)
+            intent.putExtra("note", expense.note)
+            intent.putExtra("type", "Expense")
+            it.context.startActivity(intent)
+        }
 
     }
 
