@@ -1,6 +1,7 @@
 package com.example.uas_paba_klmpk6
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
@@ -87,6 +88,8 @@ class inputBudget : AppCompatActivity() {
 
                 runOnUiThread {
                     Toast.makeText(this@inputBudget, "Budget successfully added!", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@inputBudget, budgeting_main::class.java)
+                    startActivity(intent)
                     finish() // Close the current activity
                 }
             }

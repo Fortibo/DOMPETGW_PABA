@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -46,6 +47,40 @@ class detailBudget : AppCompatActivity() {
         val bt_detail = findViewById<Button>(R.id.btDetailBudget)
         val bt_addFunds = findViewById<LinearLayout>(R.id.constraintAddFunds)
         val bt_withdraw = findViewById<LinearLayout>(R.id.constraintWithdraw)
+
+        val _btnDeleteBudget = findViewById<Button>(R.id.btnDeleteBudget)
+        _btnDeleteBudget.setOnClickListener {
+            // Confirm deletion with a dialog
+            val confirmationDialog = BottomSheetDialog(this)
+            val confirmView = LayoutInflater.from(this).inflate(R.layout.bottom_sheet_confirm_delete, null)
+            confirmationDialog.setContentView(confirmView)
+
+            val _confirmDelete = confirmView.findViewById<Button>(R.id.confirmDelete)
+            val _cancelDelete = confirmView.findViewById<Button>(R.id.cancelDelete)
+
+            // Confirm button
+            _confirmDelete?.setOnClickListener {
+                CoroutineScope(Dispatchers.IO).async {
+                    // Delete the budget from the database
+                    DB.funBudgetDAO().deleteBudget(budget)
+                    runOnUiThread {
+                        // Notify the user of the deletion
+                        Toast.makeText(this@detailBudget, "Budget deleted successfully!", Toast.LENGTH_SHORT).show()
+                        // Close the activity after deletion
+                        finish()
+                    }
+                }
+                confirmationDialog.dismiss()
+            }
+
+            // Cancel button
+            _cancelDelete?.setOnClickListener {
+                confirmationDialog.dismiss()
+            }
+
+            confirmationDialog.show()
+        }
+        
 
         if(Iid != -1) {
             CoroutineScope(Dispatchers.IO).async {
