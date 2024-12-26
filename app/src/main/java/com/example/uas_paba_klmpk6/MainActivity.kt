@@ -21,10 +21,10 @@ import java.text.NumberFormat
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var DB : mainDB
+    private lateinit var DB: mainDB
 
-    private lateinit var adapterTransactionList : adapterAll
-    private var TransactionList :MutableList<history> = mutableListOf()
+    private lateinit var adapterTransactionList: adapterAll
+    private var TransactionList: MutableList<history> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,12 +44,12 @@ class MainActivity : AppCompatActivity() {
 
         val income = DB.funmainDAO().getTotalIncome()
         val expense = DB.funmainDAO().getTotalExpense()
-        val rupiahFormat : NumberFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
+        val rupiahFormat: NumberFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
         rupiahFormat.setMaximumFractionDigits(0)
 
         val formatIncome = rupiahFormat.format(income)
         val formatExpense = rupiahFormat.format(expense)
-        val netBalance : String = rupiahFormat.format(income-expense)
+        val netBalance: String = rupiahFormat.format(income - expense)
 
         _tvBalance.setText(netBalance)
         _tvIncome.setText(formatIncome)
@@ -69,8 +69,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        _btHistory.setOnClickListener{
-            val intent = Intent(this@MainActivity,HistoryPage::class.java)
+        _btHistory.setOnClickListener {
+            val intent = Intent(this@MainActivity, HistoryPage::class.java)
+            startActivity(intent)
+        }
+
+        val _btnBudget = findViewById<ImageButton>(R.id.btnBudget)
+
+        _btnBudget.setOnClickListener{
+            val intent = Intent(this@MainActivity, budgeting_main::class.java)
             startActivity(intent)
         }
     }
