@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".inputCategory">
+    tools:context=".inputAmount">
 
     <LinearLayout
         android:layout_marginTop="16dp"
@@ -37,9 +37,8 @@
             android:fontFamily="@font/plus_jakarta_sans_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Categories"/>
+            android:text="Amount"/>
     </LinearLayout>
-
 
     <!--  Subtitle layout  -->
     <LinearLayout
@@ -72,7 +71,7 @@
             android:paddingTop="24dp"
             android:paddingBottom="24dp"
             android:text="\u2014"
-            android:textColor="#BBBBBB"
+            android:textColor="#36A74A"
             android:textSize="15sp" />
 
         <TextView
@@ -82,7 +81,7 @@
             android:paddingTop="24dp"
             android:paddingBottom="24dp"
             android:text="2. Amount"
-            android:textColor="#BBBBBB"
+            android:textColor="#36A74A"
             android:textSize="12sp" />
 
         <TextView
@@ -119,124 +118,40 @@
             />
     </LinearLayout>
 
-    <!--  Type button layout  -->
-    <LinearLayout
-        android:id="@+id/TypePickerLayout"
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/amountSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:layout_marginLeft="16dp"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        app:layout_constraintTop_toBottomOf="@id/subTitleLayout"
+        app:layout_constraintLeft_toLeftOf="@id/subTitleLayout"/>
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        app:layout_constraintTop_toBottomOf="@id/subTitleLayout"
-        app:layout_constraintLeft_toLeftOf="@id/subTitleLayout"
-        app:layout_constraintRight_toRightOf="@id/subTitleLayout"
-        >
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/amountSubtitle">
 
-        <TextView
-            android:fontFamily="@font/plus_jakarta_sans_bold"
-            android:textSize="12sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Categories"/>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/chooseBtn"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="6dp"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:cardCornerRadius="8dp"
-            app:cardBackgroundColor="@android:color/white"
-            >
-
-            <TextView
-                android:id="@+id/selectedCategory"
-                android:layout_marginLeft="16dp"
-                android:fontFamily="@font/plus_jakarta_sans_bold"
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Choose Category"/>
-
-            <TextView
-                android:layout_marginRight="16dp"
-                android:fontFamily="@font/plus_jakarta_sans_bold"
-                android:layout_gravity="end|center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#36A74A"
-                android:text="Select"/>
-
-
-        </androidx.cardview.widget.CardView>
-
-        <LinearLayout
-            android:orientation="horizontal"
+        <EditText
+            android:id="@+id/etAmount"
+            android:padding="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:hint="Enter new amount"
+            android:textSize="15sp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:background="@null"
+            android:inputType="number"
+            />
 
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/incomeSelectBtn"
-                android:layout_marginLeft="6dp"
-                android:layout_width="163.5dp"
-                android:layout_height="98dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="8dp"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@android:color/white">
-
-                <TextView
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/plus_jakarta_sans_medium"
-                    android:textSize="14sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Income"/>
-
-                <ImageView
-                    android:layout_marginTop="24dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/income_icon"/>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/expenseSelectBtn"
-                android:layout_marginLeft="40dp"
-                android:layout_width="163.5dp"
-                android:layout_height="98dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="8dp"
-                android:foreground="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@android:color/white">
-
-                <TextView
-                    android:layout_gravity="center_horizontal"
-                    android:fontFamily="@font/plus_jakarta_sans_medium"
-                    android:textSize="14sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Expense"/>
-
-                <ImageView
-                    android:layout_marginTop="24dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/expense_icon"/>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </LinearLayout>
-
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/nextBtn"
@@ -247,5 +162,4 @@
         android:text="Next"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

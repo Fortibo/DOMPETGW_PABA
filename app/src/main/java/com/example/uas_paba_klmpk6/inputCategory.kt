@@ -1,9 +1,11 @@
 package com.example.uas_paba_klmpk6
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -44,9 +46,11 @@ class inputCategory : AppCompatActivity() {
 
 
         adapterCategory = adapterCategory(arCategoryEmpty)
-//        var _rvCategory = findViewById<RecyclerView>(R.id.categoryRecycler)
-//        _rvCategory.layoutManager = LinearLayoutManager(this)
-//        _rvCategory.adapter = adapterCategory
+        var _btnNext = findViewById<Button>(R.id.nextBtn)
+        _btnNext.setOnClickListener {
+            val intent = Intent(this@inputCategory, inputAmount::class.java)
+            startActivity(intent)
+        }
 
         var _btnIncome = findViewById<CardView>(R.id.incomeSelectBtn)
         var _btnExpense = findViewById<CardView>(R.id.expenseSelectBtn)
