@@ -31,6 +31,7 @@ class budgeting_main : AppCompatActivity() {
             insets
         }
         adapterBudget = adapterBudget(BudgetList)
+
         DB = mainDB.getDatabase(this)
 
         val _rvBudget = findViewById<RecyclerView>(R.id.rvBudget)
@@ -41,11 +42,7 @@ class budgeting_main : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        CoroutineScope(Dispatchers.IO).async {
-            val daftarBudget = DB.funBudgetDAO().getAllBudgets()
-            adapterBudget.isiBudgetData(daftarBudget)
-            Log.d("data ROOM", daftarBudget.toString())
-        }
+
 //        CoroutineScope(Dispatchers.IO).launch {
 //            // Create dummy budgeting data
 //            val newBudget1 = budgeting(
@@ -85,5 +82,10 @@ class budgeting_main : AppCompatActivity() {
 //            Log.d("DB_INSERT", "Budget Added: $newBudget2")
 //            Log.d("DB_INSERT", "Budget Added: $newBudget3")
 //        }
+        CoroutineScope(Dispatchers.IO).async {
+            val daftarBudget = DB.funBudgetDAO().getAllBudgets()
+            adapterBudget.isiBudgetData(daftarBudget)
+            Log.d("data ROOM", daftarBudget.toString())
+        }
     }
 }

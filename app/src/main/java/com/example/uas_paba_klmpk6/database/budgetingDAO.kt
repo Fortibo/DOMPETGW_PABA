@@ -20,7 +20,7 @@ interface budgetingDAO {
     @Delete
     fun deleteBudget(budget: budgeting)
 
-    @Query("SELECT * FROM budgeting")
+    @Query("SELECT * FROM budgeting ORDER BY id_budget asc")
     fun getAllBudgets(): MutableList<budgeting>
 
     @Query("SELECT * FROM budgeting WHERE id_budget = :id")
