@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -63,6 +64,7 @@ class HistoryPage : AppCompatActivity() {
         val btHome = findViewById<ImageButton>(R.id.btnHome)
         val _btAdd = findViewById<ImageButton>(R.id.btnAdd)
         val _btnBudget = findViewById<ImageButton>(R.id.btnBudget)
+        val _btnMutasi  = findViewById<ImageView>(R.id.mutasiBtn)
 
         val txtNetMoney =  findViewById<TextView>(R.id.netbalanceMoney)
         val txtIncomeMoney =  findViewById<TextView>(R.id.incomeTextMoney)
@@ -128,6 +130,10 @@ class HistoryPage : AppCompatActivity() {
         }
         _btnBudget.setOnClickListener{
             val intent = Intent(this@HistoryPage, budgeting_main::class.java)
+            startActivity(intent)
+        }
+        _btnMutasi.setOnClickListener {
+            val intent = Intent(this@HistoryPage,MutasiPage::class.java)
             startActivity(intent)
         }
     }

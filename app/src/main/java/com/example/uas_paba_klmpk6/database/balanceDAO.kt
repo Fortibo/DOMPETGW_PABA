@@ -116,5 +116,33 @@ interface balanceDAO {
 //    )
 //""")
 //    fun getTemplateInput(): MutableList<templateInput>
+@Query("""
+    SELECT * 
+    FROM expense
+    WHERE date BETWEEN :startDate AND :endDate
+    ORDER BY date ASC
+""")
+fun getExpensesByDateRange(startDate: String, endDate: String): MutableList<expense>
 
+    @Query("""
+    SELECT * 
+    FROM income
+    WHERE date BETWEEN :startDate AND :endDate
+    ORDER BY date ASC
+""")
+    fun getIncomesByDateRange(startDate: String, endDate: String): MutableList<income>
+
+    @Query("""
+    SELECT 'income' AS type, category, amount, title, note, date 
+    FROM income 
+    WHERE date BETWEEN :startDate AND :endDate 
+
+    UNION ALL 
+
+    SELECT 'expense' AS type, category, amount, title, note, date 
+    FROM expense 
+    WHERE date BETWEEN :startDate AND :endDate 
+    ORDER BY date ASC
+""")
+    fun getAllHistoryByDateRange(startDate: String, endDate: String): MutableList<history>
 }

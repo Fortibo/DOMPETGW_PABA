@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MutasiPage">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/top1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/square_border"
+            android:outlineProvider="background"
+            android:padding="8dp"
+            android:src="@drawable/arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Mutation"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:textFontWeight="700"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/backButton"
+            app:layout_constraintStart_toEndOf="@+id/backButton"
+            app:layout_constraintTop_toTopOf="@+id/backButton" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top1">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:textColor="@color/black"
+            android:text="Jenis Transaksi"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/incomeSelectBtn"
+            android:background="@drawable/border"
+            android:layout_width="163.5dp"
+            android:layout_height="98dp"
+            android:layout_marginTop="8dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:text="Income"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/income_icon" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/expenseSelectBtn"
+            android:layout_width="163.5dp"
+            android:background="@drawable/border"
+            android:layout_height="98dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/incomeSelectBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/incomeSelectBtn">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:text="Expense"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/expense_icon" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/allSelectButton"
+            android:layout_width="match_parent"
+            android:background="@drawable/border"
+            android:layout_height="98dp"
+            android:layout_marginTop="8dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/incomeSelectBtn">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/plus_jakarta_sans_medium"
+                android:text="All"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/cardpayment" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/dateSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:text="From : "
+
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/allSelectButton" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/chooseFromDateBtn"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="8dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="@+id/dateSubtitle"
+            app:layout_constraintTop_toBottomOf="@id/dateSubtitle">
+
+            <TextView
+                android:id="@+id/selectedFromDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:text="Select Date"
+                android:textColor="@color/black" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center"
+                android:paddingRight="8dp"
+                android:src="@drawable/arrow_next" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/dateTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:text="To : "
+
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chooseFromDateBtn" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/chooseToDateBtn"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="8dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintStart_toStartOf="@+id/dateSubtitle"
+            app:layout_constraintTop_toBottomOf="@+id/dateTo">
+
+            <TextView
+                android:id="@+id/selectedToDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:text="Select Date"
+                android:textColor="@color/black" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center"
+                android:paddingRight="8dp"
+                android:src="@drawable/arrow_next" />
+
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:id="@+id/btnGoMutasi"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:text="GO"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:backgroundTint="#36A74A"
+            app:layout_constraintTop_toBottomOf="@+id/chooseToDateBtn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,4 +13,12 @@ object DateHelper {
         val date = Date()
         return dateFormat.format(date)
     }
+    fun getCurrentFormatDate() : String {
+        val dateFormat = SimpleDateFormat(
+            "dd - MM - yyyy",
+            Locale.getDefault()
+        )
+        val date = Date()
+        return dateFormat.format(date)
+    }
 }
