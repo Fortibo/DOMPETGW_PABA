@@ -47,7 +47,7 @@ class detailTemplate : AppCompatActivity() {
             _cardSelectedType.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#C7F9BB"))
             _selectedTypeTemplateReview.setText(terimaData.type)
 
-            _tvTemplateAmountReview.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#C7F9BB"))
+            _tvTemplateAmountReview.setTextColor(Color.parseColor("#C7F9BB"))
             _tvTemplateAmountReview.text = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
                 .apply { maximumFractionDigits = 0 }
                 .format(terimaData?.amount)
@@ -55,7 +55,7 @@ class detailTemplate : AppCompatActivity() {
             _cardSelectedType.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FF6B6B"))
             _selectedTypeTemplateReview.setText(terimaData.type)
 
-            _tvTemplateAmountReview.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FF6B6B"))
+            _tvTemplateAmountReview.setTextColor(Color.parseColor("#FF6B6B"))
             _tvTemplateAmountReview.text = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
                 .apply { maximumFractionDigits = 0 }
                 .format(terimaData?.amount)
@@ -68,6 +68,9 @@ class detailTemplate : AppCompatActivity() {
 
 
         val _btnSubmit = findViewById<Button>(R.id.nextBtnTemplate)
+        _btnSubmit.setOnClickListener{
+            
+        }
 
         val _btnCancel = findViewById<Button>(R.id.cancelBtnTemplate)
         _btnCancel.setOnClickListener{
