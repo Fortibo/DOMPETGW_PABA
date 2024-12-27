@@ -53,7 +53,7 @@ class detailTemplate : AppCompatActivity() {
             _cardSelectedType.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#C7F9BB"))
             _selectedTypeTemplateReview.setText(terimaData.type)
 
-            _tvTemplateAmountReview.setTextColor(Color.parseColor("#C7F9BB"))
+            _tvTemplateAmountReview.setTextColor(Color.parseColor("#4BC355"))
             _tvTemplateAmountReview.text = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
                 .apply { maximumFractionDigits = 0 }
                 .format(terimaData?.amount)
