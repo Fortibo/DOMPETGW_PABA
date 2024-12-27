@@ -92,4 +92,28 @@ interface balanceDAO {
     @Query("SELECT * FROM templateInput WHERE id_template=:isi_id")
     suspend fun getItemTemplate(isi_id: Int) : templateInput
 
+
+//    get untuk expense & income yang unik
+@Query("""
+    SELECT 'income' AS type, category, amount, title, note, date
+    FROM income
+    WHERE id_income IN (
+        SELECT MIN(id_income)
+        FROM income 
+        GROUP BY category, amount 
+        HAVING COUNT(*) = 1
+    )
+
+    UNION ALL
+
+    SELECT 'expense' AS type, category, amount, title, note, date
+    FROM expense
+    WHERE id_expense IN (
+        SELECT MIN(id_expense)
+        FROM expense 
+        GROUP BY category, amount 
+        HAVING COUNT(*) = 1
+    )
+""")
+fun getTemplateInput(): MutableList<templateInput>
 }
