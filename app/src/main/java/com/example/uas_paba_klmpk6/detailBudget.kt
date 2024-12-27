@@ -179,7 +179,7 @@ class detailBudget : AppCompatActivity() {
             var uang_sekarang = budget.saved_amount + fundInt
             CoroutineScope(Dispatchers.IO).async {
                 DB.funBudgetDAO().updateBudgetFixed(
-                   
+
                     isi_saved_amount = uang_sekarang,
                     pilih_id_budget = Iid
                 )
