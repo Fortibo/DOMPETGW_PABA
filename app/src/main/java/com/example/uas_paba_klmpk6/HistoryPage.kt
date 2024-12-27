@@ -63,6 +63,7 @@ class HistoryPage : AppCompatActivity() {
         val btHome = findViewById<ImageButton>(R.id.btnHome)
         val _btAdd = findViewById<ImageButton>(R.id.btnAdd)
         val _btnBudget = findViewById<ImageButton>(R.id.btnBudget)
+        val _btnTemplate = findViewById<ImageButton>(R.id.btnSettings)
 
         val txtNetMoney =  findViewById<TextView>(R.id.netbalanceMoney)
         val txtIncomeMoney =  findViewById<TextView>(R.id.incomeTextMoney)
@@ -110,7 +111,7 @@ class HistoryPage : AppCompatActivity() {
             btIncome.setBackgroundResource(R.drawable.border)
             btNetBalance.setBackgroundResource(R.drawable.border)
 
-            txtQueryType.setText("Expense(s)")
+            txtQueryType.setText("Expenses")
             txtQueryType.setTextColor(Color.parseColor("#FF3728"))
         }
         btNetBalance.setOnClickListener {
@@ -128,6 +129,10 @@ class HistoryPage : AppCompatActivity() {
         }
         _btnBudget.setOnClickListener{
             val intent = Intent(this@HistoryPage, budgeting_main::class.java)
+            startActivity(intent)
+        }
+        _btnTemplate.setOnClickListener {
+            val intent = Intent(this@HistoryPage, tampilanTemplate::class.java)
             startActivity(intent)
         }
     }

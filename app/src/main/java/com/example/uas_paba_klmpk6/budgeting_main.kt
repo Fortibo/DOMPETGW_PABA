@@ -59,6 +59,17 @@ class budgeting_main : AppCompatActivity() {
             intent = Intent(this@budgeting_main, MainActivity::class.java)
             startActivity(intent)
         }
+
+        val _btnTemplate = findViewById<ImageButton>(R.id.btnSettings)
+        _btnTemplate.setOnClickListener {
+            intent = Intent(this@budgeting_main, tampilanTemplate::class.java)
+            startActivity(intent)
+        }
+        val _btnAddCategories = findViewById<ImageButton>(R.id.btnAdd)
+        _btnAddCategories.setOnClickListener {
+            intent = Intent(this@budgeting_main, inputCategory::class.java)
+            startActivity(intent)
+        }
     }
 
     override fun onStart() {
