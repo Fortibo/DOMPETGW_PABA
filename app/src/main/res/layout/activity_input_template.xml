@@ -14,7 +14,7 @@
         android:id="@+id/noteSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Note (Optional)"
+        android:text="Nama Template"
         android:textColor="@color/black"
         android:fontFamily="@font/plus_jakarta_sans_bold"
         app:layout_constraintTop_toTopOf="parent"
@@ -41,6 +41,229 @@
             android:fontFamily="@font/plus_jakarta_sans_medium"
             android:background="@null"
             android:textColor="@color/black"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/inputNameBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/noteSubtitle">
+
+        <EditText
+            android:id="@+id/et"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your traxnsaction note"
+            android:textSize="15sp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:background="@null"
+            android:textColor="@color/black"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:id="@+id/subtitleCategory"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/inputNameBox"
+        app:layout_constraintLeft_toLeftOf="@id/noteSubtitle"
+        android:text="Categories"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/chooseCategoryBtn"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/subtitleCategory"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Left section: Selected Category -->
+            <TextView
+                android:id="@+id/selectedCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:text="Choose Category" />
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/selectedTypeCard"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="8dp"
+                android:backgroundTint="#C7F9BB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/selectedType"
+                    android:textSize="10sp"
+                    android:layout_margin="3dp"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/plus_jakarta_sans_bold"
+                    android:text="Income" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_gravity="end|center"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:text="Select"
+                android:textColor="#36A74A" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:id="@+id/dateSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date"
+        android:textColor="@color/black"
+        android:layout_marginLeft="16dp"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        app:layout_constraintTop_toBottomOf="@id/chooseCategoryBtn"
+        app:layout_constraintLeft_toLeftOf="@id/subtitleCategory"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/chooseDateBtn"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/dateSubtitle"
+        >
+
+        <TextView
+            android:id="@+id/selectedDate"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Date"/>
+
+
+
+        <ImageView
+            android:paddingRight="8dp"
+            android:layout_gravity="end|center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_next"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:id="@+id/noteSubtitleCatatan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Note (Optional)"
+        android:textColor="@color/black"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        app:layout_constraintTop_toBottomOf="@id/chooseDateBtn"
+        app:layout_constraintLeft_toLeftOf="@id/subtitleCategory"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvNoteCatatan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/noteSubtitleCatatan">
+
+        <EditText
+            android:id="@+id/etNoteCatatan"
+            android:padding="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your traxnsaction note"
+            android:textSize="15sp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:background="@null"
+            android:textColor="@color/black"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_marginTop="16dp"
+        android:id="@+id/amountSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:textColor="@color/black"
+        android:layout_marginLeft="16dp"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        app:layout_constraintTop_toBottomOf="@id/cvNoteCatatan"
+        app:layout_constraintLeft_toLeftOf="@id/subtitleCategory"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/amountSubtitle">
+
+        <EditText
+            android:id="@+id/etAmount"
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter new amount"
+            android:textSize="15sp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:background="@null"
+            android:inputType="number"
             />
 
     </androidx.cardview.widget.CardView>
