@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
 
         val _btHistory = findViewById<ImageButton>(R.id.btnHistory)
         val _btAdd = findViewById<ImageButton>(R.id.btnAdd)
+        val _btSetting = findViewById<ImageButton>(R.id.btnSettings)
 
         _btAdd.setOnClickListener {
             val intent = Intent(this@MainActivity, inputCategory::class.java)
@@ -74,12 +75,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        _btSetting.setOnClickListener {
+            val intent = Intent(this@MainActivity, inputTemplate::class.java)
+            startActivity(intent)
+        }
+
         val _btnBudget = findViewById<ImageButton>(R.id.btnBudget)
 
         _btnBudget.setOnClickListener{
             val intent = Intent(this@MainActivity, budgeting_main::class.java)
             startActivity(intent)
         }
+
     }
 
     override fun onStart() {
