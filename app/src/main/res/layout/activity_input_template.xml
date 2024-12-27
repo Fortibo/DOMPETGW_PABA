@@ -233,9 +233,8 @@
 <!--    Select Date -->
     <androidx.cardview.widget.CardView
         android:id="@+id/chooseDateBtn"
-        android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="55dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -243,9 +242,11 @@
         app:cardCornerRadius="8dp"
         app:cardBackgroundColor="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/dateSubtitle"
+        app:layout_constraintLeft_toLeftOf="@id/dateSubtitle"
         >
 
         <TextView
+            android:layout_marginRight="32dp"
             android:id="@+id/selectedDate"
             android:layout_marginLeft="16dp"
             android:fontFamily="@font/plus_jakarta_sans_bold"
@@ -265,6 +266,33 @@
             android:src="@drawable/arrow_next"/>
 
 
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/todayButton"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="@id/chooseDateBtn"
+        app:layout_constraintBottom_toBottomOf="@id/chooseDateBtn"
+        app:layout_constraintLeft_toRightOf="@id/chooseDateBtn"
+        >
+
+        <TextView
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today?"/>
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -318,6 +346,7 @@
 
 <!--    Amount-->
     <androidx.cardview.widget.CardView
+        android:id="@+id/amountInputBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
@@ -335,6 +364,44 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter new amount"
+            android:textSize="15sp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"
+            android:background="@null"
+            android:inputType="number"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/reminderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:text="Reminder"
+        android:textColor="@color/black"
+        app:layout_constraintLeft_toLeftOf="@id/subtitleCategory"
+        app:layout_constraintTop_toBottomOf="@id/amountInputBox" />
+
+    <!--    Amount-->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/reminderText">
+
+        <EditText
+            android:id="@+id/etReminder"
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="auto repeat every?"
             android:textSize="15sp"
             android:fontFamily="@font/plus_jakarta_sans_medium"
             android:background="@null"

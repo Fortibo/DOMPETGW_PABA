@@ -91,6 +91,8 @@ class inputTemplate : AppCompatActivity() {
         val _etAmount = findViewById<TextView>(R.id.etAmount)
         val _tvDate = findViewById<TextView>(R.id.selectedDate)
         val _submitBtn = findViewById<Button>(R.id.nextBtn)
+        val _todayBtn = findViewById<CardView>(R.id.todayButton)
+        val _etReminder = findViewById<EditText>(R.id.etReminder)
 
 
         val bottomSheetDialog = BottomSheetDialog(this@inputTemplate)
@@ -155,6 +157,16 @@ class inputTemplate : AppCompatActivity() {
             _btnChoose.isVisible = false
         }
 
+        _todayBtn.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+            val month = calendar.get(Calendar.MONTH)
+            val year = calendar.get(Calendar.YEAR)
+
+            val date = makeDateString(day, month + 1, year)
+            _tvDate.text = date
+        }
+
         adapterCategory.setOnItemClickCallback(
             object :  adapterCategory.OnItemClickCallback {
                 override fun pickedInput(dtCategory: category) {
@@ -178,7 +190,8 @@ class inputTemplate : AppCompatActivity() {
                     title = _etTitle.text.toString(),
                     date =  _tvDate.text.toString(),
                     amount = _etAmount.text.toString().toInt(),
-                    note = _etNote.text.toString()
+                    note = _etNote.text.toString(),
+                    reminder = _etReminder.text.toString().toInt()
                 )
 
                 CoroutineScope(Dispatchers.IO).async {
@@ -193,8 +206,8 @@ class inputTemplate : AppCompatActivity() {
                     title = _etTitle.text.toString(),
                     date =  _tvDate.text.toString(),
                     amount = _etAmount.text.toString().toInt(),
-                    note = _etNote.text.toString()
-
+                    note = _etNote.text.toString(),
+                    reminder = _etReminder.text.toString().toInt()
                 )
             }
 

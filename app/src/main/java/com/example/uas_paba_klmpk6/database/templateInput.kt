@@ -25,6 +25,9 @@ data class templateInput(
     @ColumnInfo(name = "note")
     var note: String? = null,
 
+    @ColumnInfo(name = "reminder")
+    var reminder: Int,
+
     @ColumnInfo(name = "date")
     val date: String,
 )
