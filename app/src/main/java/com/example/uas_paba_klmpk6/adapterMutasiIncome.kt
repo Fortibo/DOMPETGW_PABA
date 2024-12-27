@@ -10,6 +10,7 @@ import com.example.uas_paba_klmpk6.database.expense
 import com.example.uas_paba_klmpk6.database.history
 import com.example.uas_paba_klmpk6.database.income
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 import java.util.Locale
 
 class adapterMutasiIncome(private val incomeData : MutableList<income>) : RecyclerView.Adapter<adapterMutasiIncome.ListViewHolder> () {
@@ -39,8 +40,22 @@ class adapterMutasiIncome(private val incomeData : MutableList<income>) : Recycl
         val rupiahFormat: NumberFormat = NumberFormat.getCurrencyInstance(Locale("id", "ID"))
         rupiahFormat.setMaximumFractionDigits(0) // Menghilangkan desimal
         val formattedAmount: String = rupiahFormat.format(income.amount)
+
+        // Format Tanggal (Hanya Hari dan Bulan)
+        val inputDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val outputDateFormat = SimpleDateFormat("dd MMM", Locale.getDefault())
+
+        val date = inputDateFormat.parse(income.date) // Parsing tanggal awal // Format ke "dd MMM"
+
+        val formattedDate = try {
+            val date = inputDateFormat.parse(income.date)
+            outputDateFormat.format(date)
+        } catch (e: Exception) {
+            "Invalid Date" // Menampilkan pesan jika parsing gagal
+        }
+
         holder.tvIncomeTglMutasi.setText(income.date)
-        holder.tvIncomeTglHariMutasi.setText(income.date)
+        holder.tvIncomeTglHariMutasi.setText(formattedDate)
         holder.tvIncomeIdMutasi.setText(position.toString())
 
         holder.tvIncomeTipeTransaksiMutasi.setText("Income")

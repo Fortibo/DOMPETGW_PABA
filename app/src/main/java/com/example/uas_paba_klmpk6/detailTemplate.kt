@@ -1,5 +1,6 @@
 package com.example.uas_paba_klmpk6
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -10,8 +11,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.uas_paba_klmpk6.database.expense
+import com.example.uas_paba_klmpk6.database.income
 import com.example.uas_paba_klmpk6.database.mainDB
 import com.example.uas_paba_klmpk6.database.templateInput
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -47,7 +53,7 @@ class detailTemplate : AppCompatActivity() {
             _cardSelectedType.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#C7F9BB"))
             _selectedTypeTemplateReview.setText(terimaData.type)
 
-            _tvTemplateAmountReview.setTextColor(Color.parseColor("#C7F9BB"))
+            _tvTemplateAmountReview.setTextColor(Color.parseColor("#4BC355"))
             _tvTemplateAmountReview.text = NumberFormat.getCurrencyInstance(Locale("in", "ID"))
                 .apply { maximumFractionDigits = 0 }
                 .format(terimaData?.amount)
@@ -68,8 +74,33 @@ class detailTemplate : AppCompatActivity() {
 
 
         val _btnSubmit = findViewById<Button>(R.id.nextBtnTemplate)
+
         _btnSubmit.setOnClickListener{
-            
+            if (terimaData?.type == "Expense"){
+                val data = expense(
+                    category = terimaData.category,
+                    amount = terimaData.amount,
+                    date = terimaData.date,
+                    title = terimaData.title,
+                    note = terimaData.note)
+
+                CoroutineScope(Dispatchers.IO).async {
+                    DB.funmainDAO().insertExpense(data)
+                }
+            } else if (terimaData?.type == "Income"){
+                val data = income(
+                    category = terimaData.category,
+                    amount = terimaData.amount,
+                    date = terimaData.date,
+                    title = terimaData.title,
+                    note = terimaData.note)
+
+                CoroutineScope(Dispatchers.IO).async {
+                    DB.funmainDAO().insertIncome(data)
+                }
+            }
+            val intent = Intent(this@detailTemplate, MainActivity::class.java)
+            startActivity(intent)
         }
 
         val _btnCancel = findViewById<Button>(R.id.cancelBtnTemplate)

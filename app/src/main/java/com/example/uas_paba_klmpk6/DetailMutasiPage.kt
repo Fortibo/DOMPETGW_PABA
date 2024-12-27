@@ -68,7 +68,7 @@ class DetailMutasiPage : AppCompatActivity() {
                 if (expenseData != null) {
                     adapterExpenseMutasi.isiData(expenseData)
                 }
-                rvMutasi.adapter = adapterIncomeMutasi
+                rvMutasi.adapter = adapterExpenseMutasi
             }
         }
     }

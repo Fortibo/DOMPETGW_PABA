@@ -178,6 +178,7 @@ class inputTemplate : AppCompatActivity() {
             })
 
         var dataTemplate: templateInput
+        _etNote.setText("-")
         _submitBtn.setOnClickListener {
             if (_selectedCategory.text != "Choose Category"
                 && _tvDate.text != "Select Date"

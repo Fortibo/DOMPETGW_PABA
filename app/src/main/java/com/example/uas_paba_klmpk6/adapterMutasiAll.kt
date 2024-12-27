@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uas_paba_klmpk6.adapterAll.ListViewHolder
+import com.example.uas_paba_klmpk6.database.expense
 import com.example.uas_paba_klmpk6.database.history
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 import java.util.Locale
 
 class adapterMutasiAll (private val historyData : MutableList<history>): RecyclerView.Adapter<adapterMutasiAll.ListViewHolder> () {
@@ -37,8 +39,22 @@ class adapterMutasiAll (private val historyData : MutableList<history>): Recycle
         rupiahFormat.setMaximumFractionDigits(0) // Menghilangkan desimal
         val formattedAmount: String = rupiahFormat.format(history.amount)
 
+        // Format Tanggal (Hanya Hari dan Bulan)
+        val inputDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val outputDateFormat = SimpleDateFormat("dd MMM", Locale.getDefault())
+
+        val date = inputDateFormat.parse(history.date) // Parsing tanggal awal
+      // Format ke "dd MMM"
+
+        val formattedDate = try {
+            val date = inputDateFormat.parse(history.date)
+            outputDateFormat.format(date)
+        } catch (e: Exception) {
+            "Invalid Date" // Menampilkan pesan jika parsing gagal
+        }
+
         holder.tvAllTglMutasi.setText(history.date)
-        holder.tvAllTglHariMutasi.setText(history.date)
+        holder.tvAllTglHariMutasi.setText(formattedDate)
         holder.tvAllIdMutasi.setText(position.toString())
         holder.tvAllMoneyMutasi.setText(formattedAmount)
         holder.tvAllTipeTransaksiMutasi.setText(history.type)
