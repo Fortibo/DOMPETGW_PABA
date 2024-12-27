@@ -19,6 +19,9 @@
             android:name=".MutasiPage"
             android:exported="false" />
         <activity
+            android:name=".detailTemplate"
+            android:exported="false" />
+        <activity
             android:name=".tampilanTemplate"
             android:exported="false" />
         <activity

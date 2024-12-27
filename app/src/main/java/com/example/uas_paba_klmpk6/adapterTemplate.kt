@@ -1,9 +1,11 @@
 package com.example.uas_paba_klmpk6
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.uas_paba_klmpk6.database.templateInput
 import java.text.NumberFormat
@@ -18,6 +20,8 @@ class adapterTemplate(private val templateData: MutableList<templateInput>) : Re
         var _tvTemplateNote = itemView.findViewById<TextView>(R.id.tvTemplateNote)
         val _tvTemplateDate = itemView.findViewById<TextView>(R.id.tvTemplateDate)
         var _tvTemplateCategory = itemView.findViewById<TextView>(R.id.tvTemplateCategory)
+
+        var _clTemplateCard = itemView.findViewById<ConstraintLayout>(R.id.clTemplateCard)
 
         var _tvRemind = itemView.findViewById<TextView>(R.id.tvRemind)
     }
@@ -49,7 +53,15 @@ class adapterTemplate(private val templateData: MutableList<templateInput>) : Re
         holder._tvTemplateNote.setText(template.note)
         holder._tvTemplateDate.setText(template.date)
         holder._tvTemplateCategory.setText(template.category)
-        holder._tvRemind.setText("30 days")
+        holder._tvRemind.setText("${template.reminder} days")
+
+
+        holder._clTemplateCard.setOnClickListener{
+            val intent = Intent(it.context, detailTemplate::class.java)
+            intent.putExtra("dataTemplate", template)
+            it.context.startActivity(intent)
+            notifyDataSetChanged()
+        }
     }
 
 
