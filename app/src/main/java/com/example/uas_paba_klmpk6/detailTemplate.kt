@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
@@ -71,6 +72,26 @@ class detailTemplate : AppCompatActivity() {
         var reminderVal = terimaData?.reminder.toString()
         _tvReminderReview.setText("$reminderVal days")
         _tvNoteReview.setText(terimaData?.note)
+
+        val _btnDelete = findViewById<Button>(R.id.btnDeleteTemplate)
+        _btnDelete.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("Delete Confirmation")
+                .setMessage("Are you sure you want to delete this template?")
+                .setPositiveButton("Yes") { _, _ ->
+                    terimaData?.let { dataToDelete ->
+                        CoroutineScope(Dispatchers.IO).async {
+                            DB.funmainDAO().deleteTemplate(dataToDelete)
+                        }
+                        runOnUiThread {
+                            val intent = Intent(this@detailTemplate, MainActivity::class.java)
+                            startActivity(intent)
+                        }
+                    }
+                }
+                .setNegativeButton("No", null)
+                .show()
+        }
 
 
         val _btnSubmit = findViewById<Button>(R.id.nextBtnTemplate)
