@@ -75,4 +75,21 @@ interface balanceDAO {
 
     @Query("SELECT SUM(amount) FROM expense")
     fun getTotalExpense(): Int
+//    untuk template
+
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertTemplate(templateInput: templateInput)
+
+//    @Query("UPDATE templateInput SET amount=:isi_amount, category=:isi_category, title=:isi_title, note=:isi_note, date=:isi_date, location=:isi_location WHERE id_expense=:pilih_id")
+//    fun updateTemplate(isi_amount: Int, isi_category: String, isi_title: String, isi_note: String,isi_date: String, isi_location: String, pilih_id: Int)
+
+    @Delete
+    fun deleteTemplate(templateInput: templateInput)
+
+    @Query("SELECT * FROM templateInput ORDER BY id_template asc")
+    fun selectAllTemplate() : MutableList<templateInput>
+
+    @Query("SELECT * FROM templateInput WHERE id_template=:isi_id")
+    suspend fun getItemTemplate(isi_id: Int) : templateInput
+
 }
