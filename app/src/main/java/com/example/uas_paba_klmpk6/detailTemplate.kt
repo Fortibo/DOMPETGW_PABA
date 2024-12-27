@@ -1,5 +1,6 @@
 package com.example.uas_paba_klmpk6
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -20,10 +21,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import java.text.NumberFormat
+import java.util.Calendar
 import java.util.Locale
 
 class detailTemplate : AppCompatActivity() {
     private lateinit var DB : mainDB
+    private lateinit var datePickerDialog: DatePickerDialog
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,11 +101,17 @@ class detailTemplate : AppCompatActivity() {
         val _btnSubmit = findViewById<Button>(R.id.nextBtnTemplate)
 
         _btnSubmit.setOnClickListener{
+            val calendar = Calendar.getInstance()
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+            val month = calendar.get(Calendar.MONTH)
+            val year = calendar.get(Calendar.YEAR)
+
+            val date = makeDateString(day, month + 1, year)
             if (terimaData?.type == "Expense"){
                 val data = expense(
                     category = terimaData.category,
                     amount = terimaData.amount,
-                    date = terimaData.date,
+                    date = date,
                     title = terimaData.title,
                     note = terimaData.note)
 
@@ -112,7 +122,7 @@ class detailTemplate : AppCompatActivity() {
                 val data = income(
                     category = terimaData.category,
                     amount = terimaData.amount,
-                    date = terimaData.date,
+                    date = date,
                     title = terimaData.title,
                     note = terimaData.note)
 
@@ -129,4 +139,11 @@ class detailTemplate : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
     }
+
+    private fun makeDateString(day: Int, month: Int, year: Int): String {
+        val formattedDay = if (day < 10) "0$day" else "$day"
+        val formattedMonth = if (month < 10) "0$month" else "$month"
+        return "$year-$formattedMonth-$formattedDay"
+    }
+
 }
