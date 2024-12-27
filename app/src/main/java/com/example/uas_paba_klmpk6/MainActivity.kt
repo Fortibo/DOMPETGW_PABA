@@ -76,12 +76,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         _btSetting.setOnClickListener {
-            val intent = Intent(this@MainActivity, inputTemplate::class.java)
+            val intent = Intent(this@MainActivity, tampilanTemplate::class.java)
             startActivity(intent)
         }
 
         val _btnBudget = findViewById<ImageButton>(R.id.btnBudget)
-
         _btnBudget.setOnClickListener{
             val intent = Intent(this@MainActivity, budgeting_main::class.java)
             startActivity(intent)

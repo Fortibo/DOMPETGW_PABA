@@ -185,7 +185,7 @@ class inputTemplate : AppCompatActivity() {
                     DB.funmainDAO().insertTemplate(dataTemplate)
                 }
 
-                val intent = Intent(this@inputTemplate, MainActivity::class.java)
+                val intent = Intent(this@inputTemplate, tampilanTemplate::class.java)
                 startActivity(intent)
             } else {
                 dataTemplate = templateInput(type = _selectedType.text.toString(),

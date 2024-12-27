@@ -26,5 +26,5 @@ data class templateInput(
     var note: String? = null,
 
     @ColumnInfo(name = "date")
-    val date: String
+    val date: String,
 )

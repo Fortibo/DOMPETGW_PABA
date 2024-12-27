@@ -199,7 +199,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/plus_jakarta_sans_bold"
-                android:text="Target Date"
+                android:text="Input Date"
                 android:textColor="#929292"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
