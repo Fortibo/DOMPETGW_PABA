@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.uas_paba_klmpk6.database.expense
 import com.example.uas_paba_klmpk6.database.history
 import java.text.NumberFormat
+import java.text.SimpleDateFormat
 import java.util.Locale
 
 
@@ -42,10 +43,22 @@ class adapterMutasiExpense (private val expenseData : MutableList<expense>) : Re
         rupiahFormat.setMaximumFractionDigits(0) // Menghilangkan desimal
         val formattedAmount: String = rupiahFormat.format(expense.amount)
 
+        // Format Tanggal (Hanya Hari dan Bulan)
+        val inputDateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val outputDateFormat = SimpleDateFormat("dd MMM", Locale.getDefault())
+
+        val date = inputDateFormat.parse(expense.date) // Parsing tanggal awal
+         // Format ke "dd MMM"
+        val formattedDate = try {
+            val date = inputDateFormat.parse(expense.date)
+            outputDateFormat.format(date)
+        } catch (e: Exception) {
+            "Invalid Date" // Menampilkan pesan jika parsing gagal
+        }
 
         holder.tvExpenseIdMutasi.setText(position.toString())
         holder.tvExpenseTglMutasi.setText(expense.date)
-        holder.tvExpenseTglHariMutasi.setText(expense.date)
+        holder.tvExpenseTglHariMutasi.setText(formattedDate)
         holder.tvExpenseTipeTransaksiMutasi.setText("Expense")
 
         holder.tvExpensesetDBCB.setText("DB")
@@ -54,7 +67,7 @@ class adapterMutasiExpense (private val expenseData : MutableList<expense>) : Re
         holder.tvExpenseMoneyMutasi.setText(formattedAmount)
         holder.tvExpenseMoneyMutasi.setTextColor(Color.parseColor("#FF3728"))
 
-        holder.tvExpenseJudulMutasi.setText(position)
+        holder.tvExpenseJudulMutasi.setText(expense.title)
 
 
     }
